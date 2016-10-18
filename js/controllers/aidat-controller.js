@@ -12,7 +12,7 @@ define([
 ], function (angular) {
 	return ['$scope', '$location', 'todoStorage', 'filterFilter',
 		function ($scope, $location, todoStorage, filterFilter) {
-			$scope.testString = "Test String";
+			$scope.aidatString = "aidat String";
 		}
 	];
 });
