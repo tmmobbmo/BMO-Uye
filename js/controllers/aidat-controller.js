@@ -10,8 +10,8 @@
 define([
 	'angular'
 ], function (angular) {
-	return ['$scope', '$location', 'todoStorage', 'filterFilter',
-		function ($scope, $location, todoStorage, filterFilter) {
+	return ['$scope', '$location',
+		function ($scope, $location) {
 			$scope.aidatString = "aidat String";
 		}
 	];
