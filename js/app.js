@@ -10,23 +10,20 @@ define([
 			'ngRoute',
 			uyeService.name
 		])
-		.controller('BmoUyeController', uyeContoller)
+		.controller('LoginController', loginController)
 		.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     		$locationProvider.html5Mode(true);
     		$locationProvider.hashPrefix('!');
     		$routeProvider
     			.when('/', {
+    				templateUrl: '/templates/login.tpl.html'
+    			})
+    			.when('/genel', {
     				templateUrl: '/templates/main-page.tpl.html'
-    				//template: '<span>{{testString}}</span>'
     			})
     			.when('/aidat', {
     				templateUrl: '/templates/uye-aidat.tpl.html',
-    				//template: '<span>{{aidatString}}</span>',
     				controller: aidatController
-    			})
-    			.when('/login', {
-    				templateUrl : '/templates/login.tpl.html',
-    				controller: loginController
     			})
     			.otherwise({
     				redirectTo: '/'

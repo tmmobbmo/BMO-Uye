@@ -12,7 +12,7 @@ define([
 ], function (angular) {
 	return ['$scope', '$location',
 		function ($scope, $location) {
-			$scope.aidatString = "aidat String";
+			$scope.title = "Aidatlar";
 		}
 	];
 });

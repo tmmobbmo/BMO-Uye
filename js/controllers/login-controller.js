@@ -6,14 +6,16 @@ define([
 ], function (angular, uyeServiceModule) {
 	return ['$scope', '$location', 'Uye',
 		function ($scope, $location, Uye) {
-			$scope.loginString = "login String";
-			Uye.login("44338883652", "admin").then(function successCallback(response){
-				console.log("Success");
-				console.log(response);
-			}, function errorCallback(response){
-				console.log("Error");
-				console.log(response);
-			});
+			$scope.login = function(username, password) {
+				console.log("Form submitted: " + username + " " + password);
+				Uye.login(username, password).then(function successCallback(response){
+					console.log("Success");
+					$location.path('/genel');
+				}, function errorCallback(response){
+					console.log("Error");
+					console.log(response);
+				});
+			}
 		}
 	];
 });
