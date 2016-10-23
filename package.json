@@ -6,6 +6,7 @@
     "todomvc-app-css": "^1.0.0",
     "todomvc-common": "^1.0.1",
     "angular-ui-router": "^0.2.18",
-    "angular-route": "^1.4.9"
+    "angular-route": "^1.4.9",
+    "angular-cookies": "*"
   }
 }
