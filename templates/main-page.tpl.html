@@ -2,7 +2,7 @@
 	<div class="logo">
 		<a href="https://uye.bmo.org.tr" class="simple-text">
 			<i class="material-icons">more_vert</i>
-			BMO 3. Dönem
+			BMO Uye Portali
 		</a>
 	</div>
 	<div class="sidebar-wrapper">
@@ -39,7 +39,7 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							   <i class="material-icons">person</i>
-							   <span>Volkan Tokmak - 2778</span>
+							   <span>{{ user.ad }} {{ user.soyad }} - {{ user.sicilNo }}</span>
  						</a>
  						<ul class="dropdown-menu">
 							<li><a href="#">Profil</a></li>
@@ -50,4 +50,85 @@
 			</div>
 		</div>
 	</nav>
+	<div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header" data-background-color="red">
+                            <h4 class="title">Bilgi Güncelle</h4>
+							<p class="category">Üyelik bilgilerinizi kontrol edin</p>
+                        </div>
+                        <div class="card-content">
+                            <form ng-submit="updateInfo()">
+                                <div class="row">
+                                    <div class="col-md-6">
+										<div class="form-group label-floating">
+											<label class="control-label">İsim</label>
+											<input type="text" class="form-control" ng-model="user.ad" disabled>
+										</div>
+                                    </div>
+                                    <div class="col-md-6">
+										<div class="form-group label-floating">
+											<label class="control-label">Soyad</label>
+											<input type="text" class="form-control" ng-model="user.soyad" disabled>
+										</div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+										<div class="form-group label-floating">
+											<label class="control-label">İletişim Adresi</label>
+											<input type="text" class="form-control" ng-model="user.iletisimAdresi">
+										</div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+										<div class="form-group label-floating">
+											<label class="control-label">Cep Telefonu</label>
+											<input type="text" class="form-control" ng-model="user.cepTelNo">
+										</div>
+                                    </div>
+                                    <div class="col-md-6">
+										<div class="form-group label-floating">
+											<label class="control-label">E-posta Adresi</label>
+											<input type="text" class="form-control" ng-model="user.email">
+										</div>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-success pull-right">Güncelle</button>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+				<div class="col-md-4">
+					<div class="card card-profile">
+						<div class="card-avatar">
+							<!-- <img class="img" src="../assets/img/faces/marc.jpg" /> -->
+							<img class="img" src="https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-9/601143_10152669552705595_1611742867_n.jpg?oh=1e6a55e755985cc69a42e1a3c0d6020e&oe=58AD15F2" />
+						</div>
+
+						<div class="content">
+							<h6 class="category text-gray">{{ user.sicilNo }} | {{ user.lisansUnvan }}</h6>
+							<h4 class="card-title">{{ user.ad }} {{ user.soyad }}</h4>
+							
+							<!--<a href="ozet.html" class="btn btn-warning btn-round">
+								<i class="material-icons">file_upload</i>
+								Yükle
+							</a>
+							<a href="ozet.html" class="btn btn-success btn-round">
+								<i class="material-icons">camera_alt</i>
+								Web Cam
+							</a>-->
+						</div>
+					</div>
+    			</div>
+            </div>
+        </div>
+    </div>
 </div>

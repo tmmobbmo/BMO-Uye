@@ -13,7 +13,17 @@ define([
 	UyeController.$inject = ['$scope', '$location', 'Uye', '$cookies'];
 
 	function UyeController($scope, $location, Uye, $cookies) {
-		$scope.test = "asd";
+
+		Uye.getMemberInfo().then(function successCallback(response){
+				$scope.user = response;
+				console.log("User: ", $scope.user);
+			}, function errorCallback(response){
+				$scope.errorMessage = "Please try again later";
+		});
+
+		$scope.updateInfo = function() {
+			console.log("Successfull update: ", $scope.user);
+		};
 	}
 
 	return module

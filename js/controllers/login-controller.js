@@ -14,13 +14,12 @@ define([
 
 	function LoginController($scope, $location, Uye, $cookies) {
 		$scope.login = function(username, password) {
-			console.log("Form submitted: " + username + " " + password);
 			Uye.login(username, password).then(function successCallback(response){
+				Uye.setAuthorizationCookie(response.token);
 				$cookies.put("Authorization", response.token);
 				$location.path('/genel');
 			}, function errorCallback(response){
-				console.log("Error");
-				console.log(response);
+				$scope.errorMessage = "Please check your id and password";
 			});
 		};
 	}

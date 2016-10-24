@@ -1,14 +1,18 @@
 'use strict';
  
 define([
-	'angular'
-], function (angular) {
-	var module = angular.module('uyeService', [])
-		.factory('Uye', UyeService);
+	'angular',
+	'angular-cookies'
+], function (angular, angularCookie) {
+	var module = angular.module('uyeService', [
+		'ngCookies'
+	]).factory('Uye', UyeService);
 
-	function UyeService($http, $q) {
+	function UyeService($http, $q, $cookies) {
 		var service = {
-			login
+			login,
+			setAuthorizationCookie,
+			getMemberInfo
 		};
 		
 		function login(username, password) {
@@ -20,12 +24,55 @@ define([
 			//	"password": password
 			//};
 			//return $http.post('http://95.85.41.38:8087/auth/login', data)
-		}
+		};
+
+		function sendGetRequest(url, data) {
+			var req = {
+				method: 'GET',
+				url: url,
+				headers: {
+					'Authorization': getAuthorizationCookie()
+				},
+				data: data
+			};
+			console.log("Req: ", req);
+			return $http(req);
+		};
+
+		function setAuthorizationCookie(token) {
+			$cookies.put("Authorization", token);
+		};
+
+		function getAuthorizationCookie() {
+			return $cookies.get("Authorization");
+		};
+
+		function getMemberInfo() {
+			sendGetRequest('http://95.85.41.38:8087/member/info')
+			return $q(function(resolve, reject){
+				resolve({
+				  "id": null,
+				  "ad": "VOLKAN",
+				  "soyad": "TOKMAK",
+				  "sicilNo": "002778",
+				  "lisansUnvan": "Bilgisayar Mühendisi",
+				  "email": "volkan@tokmak.org",
+				  "cepTelNo": null,
+				  "evTelNo": null,
+				  "fotograf": null,
+				  "iletisimAdresi": "BARBAROS MAH. BİLLUR SK. TEV A. DALLI APT. BLOK  NO: 13  İÇ KAPI NO: 11 ÇANKAYA / ANKARA",
+				  "emailGonderimIzni": true,
+				  "smsGonderimIzni": true,
+				  "postaGonderimIzni": true,
+				  "pushGonderimIzni": false
+				});
+			});
+		};
 
 		return service;
 	};
 
-	UyeService.$inject = ['$http', '$q']
+	UyeService.$inject = ['$http', '$q', '$cookies']
 	
 	return module;
 });
