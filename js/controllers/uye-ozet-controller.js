@@ -5,14 +5,14 @@ define([
 	'../services/uye-service'
 ], function (angular, angularCookie, uyeServiceModule) {
 
-	var module = angular.module('uyeController', [
+	var module = angular.module('uyeOzetController', [
 		uyeServiceModule.name,
 		'ngCookies'
-	]).controller('UyeController', UyeController)
+	]).controller('UyeOzetController', UyeOzetController)
 
-	UyeController.$inject = ['$rootScope', '$scope', '$location', 'Uye', '$cookies'];
+	UyeOzetController.$inject = ['$rootScope', '$scope', '$location', 'Uye', '$cookies'];
 
-	function UyeController($rootScope, $scope, $location, Uye, $cookies) {
+	function UyeOzetController($rootScope, $scope, $location, Uye, $cookies) {
 
 		Uye.getMemberInfo().then(function successCallback(response){
 				$rootScope.user = response.data;

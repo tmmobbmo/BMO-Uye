@@ -1,5 +1,5 @@
 'use strict';
- 
+
 define([
 	'angular',
 	'angular-cookies'
@@ -12,24 +12,31 @@ define([
 		var service = {
 			login,
 			setAuthorizationCookie,
-			getMemberInfo
+			getMemberInfo,
+			getAuthorizationCookie,
+	        deleteAuthorizationCookie,
+			getSubscriptionInfo,
+			getSubscriptionDebt,
+			getSubscriptionReceiptList
 		};
-		
+
+
 		function login(username, password) {
-			return $q(function (resolve, reject) {
-                    resolve({"token": "test-token"});
-                });
-			//var data = {
-			//	"username": username,
-			//	"password": password
-			//};
-			//return $http.post('http://95.85.41.38:8087/auth/login', data)
+			//return $q(function (resolve, reject) {
+            //        resolve({"token": "test-token"});
+            //    });
+			var data = {
+				"username": username,
+				"password": password
+			};
+			return $http.post('http://95.85.41.38:8087/auth/login', data)
 		};
 
 		function sendGetRequest(url, data) {
+			var rootUrl = 'http://95.85.41.38:8087'
 			var req = {
 				method: 'GET',
-				url: url,
+				url: rootUrl + url,
 				headers: {
 					'Authorization': getAuthorizationCookie()
 				},
@@ -40,6 +47,7 @@ define([
 		};
 
 		function setAuthorizationCookie(token) {
+			// TODO: Set Expiration time for cookie
 			$cookies.put("Authorization", token);
 		};
 
@@ -47,8 +55,12 @@ define([
 			return $cookies.get("Authorization");
 		};
 
+        function deleteAuthorizationCookie() {
+            $cookies.remove("Authorization");
+        };
+
 		function getMemberInfo() {
-			sendGetRequest('http://95.85.41.38:8087/member/info')
+			return sendGetRequest('/member/info');
 			return $q(function(resolve, reject){
 				resolve({
 				  "id": null,
@@ -69,10 +81,23 @@ define([
 			});
 		};
 
+		function getSubscriptionInfo() {
+			return sendGetRequest('/subscription/info');
+		};
+
+		function getSubscriptionDebt() {
+			return sendGetRequest('/subscription/debt');
+		};
+		
+		function getSubscriptionReceiptList() {
+			return sendGetRequest('/subscription/receipt/list');
+		};
+
+
 		return service;
 	};
 
 	UyeService.$inject = ['$http', '$q', '$cookies']
-	
+
 	return module;
 });

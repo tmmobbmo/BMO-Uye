@@ -13,8 +13,23 @@ define([
 	AidatController.$inject = ['$scope', '$location', 'Uye', '$cookies'];
 
 	function AidatController($scope, $location, Uye, $cookies) {
-		console.log("In aidat");
-		$scope.hede = "asd";
+		Uye.getSubscriptionInfo().then(function successCallback(response){
+			console.log("Aidat Response: ", response.data);
+			$scope.aidatInfo = response.data;
+		}, function errorCallback(response) {
+		});
+
+		Uye.getSubscriptionDebt().then(function successCallback(response){
+			console.log("Debt Response: ", response.data);
+			$scope.debt = response.data;
+		}, function errorCallback(response) {
+		});
+
+		Uye.getSubscriptionReceiptList().then(function successCallback(response){
+			console.log("Receipt Response: ", response.data);
+			$scope.receiptInfo = response.data;
+		}, function errorCallback(response) {
+		});
 	}
 
 	return module

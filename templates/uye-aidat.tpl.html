@@ -1,1 +1,159 @@
-<span>{{aidatString}}</span>
+<div class="sidebar" data-color="red" data-image="../assets/img/sidebar-1.jpg">
+			<!--
+	        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+		    Tip 2: you can also add an image using data-image tag
+
+			-->
+
+			<div class="logo">
+				<a href="https://uye.bmo.org.tr" class="simple-text">
+					<i class="material-icons">more_vert</i>
+					BMO 3. Dönem
+				</a>
+			</div>
+
+	    	<div class="sidebar-wrapper">
+	            <ul class="nav">
+	            	<li class="active">
+		                <a ng-href="./ozet">
+		                    <i class="material-icons">dashboard</i>
+		                    <p>Üye Özet</p>
+		                </a>
+		            </li>
+            		<li>
+		                <a ng-href="./genel">
+		                    <i class="material-icons">person</i>
+		                    <p>Üyelik Bilgileriniz</p>
+		                </a>
+		            </li>
+		            <li>
+		                <a ng-href="./aidat">
+		                    <i class="material-icons">receipt</i>
+		                    <p>Aidatlar</p>
+		                </a>
+		            </li>
+        		</ul>
+	    	</div>
+		</div>
+
+	    <div class="main-panel">
+			<nav class="navbar navbar-transparent navbar-absolute">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">Aidatlar</a>
+					</div>
+					<div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+	 							   <i class="material-icons">person</i>
+	 							   <span>{{ user.ad }} {{ user.soyad }} - {{ user.sicilNo }}</span>
+		 						</a>
+		 						<ul class="dropdown-menu">
+									<li><a href="#">Profil</a></li>
+									<li><a href="#">Çıkış</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+	        <div class="content">
+	            <div class="container-fluid">
+	                <div class="row">
+	                	<div class="col-md-12">
+	                        <div class="card">
+	                            <div class="card-content table-responsive" data-background-color="green">
+	                            	<p>
+	                            		Odamızın hesap numaralarına <a href="#" style="font-weight: bold; text-decoration: underline;">buradan</a> ulaşabilirsiniz. Toplam borcunuz <span style="font-weight: bold; text-decoration: underline;">{{ debt }} TL</span>'dir.
+	                            	</p>
+	                            	<p>
+	                            		<button type="button" class="btn btn-danger btn-xs">
+											Ödeme Yap
+											<i class="material-icons">payment</i>
+										</button>
+	                            	</p>
+	                            </div>
+	                        </div>
+	                    </div>
+
+	                    <div class="col-md-12">
+	                        <div class="card">
+	                            <div class="card-header" data-background-color="red">
+	                                <h4 class="title">Yıllık Aidat Bilgisi</h4>
+	                                <p class="category">Yıllara göre ödediğiniz/ödemediğiniz aidat bilgileri</p>
+	                            </div>
+	                            <div class="card-content table-responsive">
+	                                <table class="table">
+	                                    <thead>
+	                                    	<th>Yıl</th>
+	                                    	<th>Ödenen Ay</th>
+	                                    	<th>Muaf Olduğu Ay</th>
+											<th>Kalan Ay</th>
+											<th>Aidat Tutarı</th>
+											<th>Kalan Borç</th>
+											<th>İşlemler</th>
+	                                    </thead>
+	                                    <tbody>
+	                                    	<tr ng-repeat="aidat in aidatInfo" ng-class="aidat.kalanAidatUcreti > 0 ? 'danger' : 'success'">
+	                                        	<td>{{ aidat.yil }}</td>
+	                                        	<td>{{ aidat.odenmisAySayisi }}</td>
+	                                        	<td>{{ aidat.muafOlunanAySayisi }}</td>
+	                                        	<td>{{ aidat.kalanAySayisi }}</td>
+												<td>{{ aidat.aylikAidatUcreti }} TL</td>
+												<td>{{ aidat.kalanAidatUcreti }} TL</td>
+												<td class="td-actions text-right" ng-show="aidat.kalanAidatUcreti == 0">
+													<button  type="button" class="btn btn-success btn-simple btn-xs">
+														<i class="material-icons">check_circle</i>
+													</button>
+												</td>
+												<td class="td-actions text-right" ng-show="aidat.kalanAidatUcreti > 0">
+													<button  type="button" class="btn btn-danger btn-simple btn-xs">
+														<i class="material-icons">warning</i>
+													</button>
+												</td>
+	                                        </tr>
+	                                    </tbody>
+	                                </table>
+
+	                            </div>
+	                        </div>
+	                    </div>
+
+	                    <div class="col-md-12">
+	                        <div class="card">
+	                            <div class="card-header" data-background-color="red">
+	                                <h4 class="title">Ödeme Listesi</h4>
+	                                <p class="category">Makbuzlarınıza ilişkin kayıtlar</p>
+	                            </div>
+	                            <div class="card-content table-responsive">
+	                                <table class="table table-hover">
+	                                    <thead>
+	                                        <th>Makbuz #</th>
+	                                    	<th>Miktar</th>
+	                                    	<th>Tarih</th>
+	                                    	<th>Ödeme Türü</th>
+	                                    </thead>
+	                                    <tbody>
+	                                        <tr ng-repeat="receipt in receiptInfo">
+	                                        	<td>{{ receipt.makbuzNo > 0 ? receipt.makbuzNo : '-'}}</td>
+	                                        	<td>{{ receipt.ucret }} TL</td>
+	                                        	<td>{{ receipt.tarih }}</td>
+	                                        	<td>{{ receipt.odemeTipi }}</td>
+	                                        </tr>
+	                                    </tbody>
+	                                </table>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
