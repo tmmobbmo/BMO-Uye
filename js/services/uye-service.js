@@ -26,8 +26,7 @@ define([
             getActiveAnnouncementList,
             getActiveAnnouncementCount,
             getAnnouncementList,
-            createNewAnnouncement,
-            rssList
+            createNewAnnouncement
         };
 
         function login(username, password) {
@@ -124,15 +123,6 @@ define([
 
         function getActiveAnnouncementCount() {
             return sendGetRequest('/summary/announcement/count');
-        }
-
-        function rssList() {
-            // var req = {
-            //     method: 'GET',
-            //     url: 'http://www.bmo.org.tr/feed/',
-            // };
-            // return $http(req);
-            return;
         }
 
         // !dashboard services

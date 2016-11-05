@@ -53,12 +53,6 @@ define([
             $scope.errorMessage = "An error occured!";
         });
 
-        Uye.rssList().then(function successCallback(response) {
-            console.log(response);
-        }, function errorCallback(response) {
-            $scope.errorMessage = "An error occured!";
-        });
-
         $scope.logout = function() {
             Uye.deleteAuthorizationCookie();
             $location.path('/');
