@@ -2,15 +2,17 @@ define([
     'angular',
     'angular-route',
     'angular-cookies',
+    'angular-credit-cards',
     'controllers/uye-bilgi-controller',
     'controllers/uye-aidat-controller',
     'controllers/login-controller',
     'controllers/uye-ozet-controller',
     'services/uye-service'
-], function(angular, ngRoute, ngCookies, uyeBilgiControllerModule, uyeAidatControllerModule, loginControllerModule, uyeOzetControllerModule, uyeService) {
+], function(angular, ngRoute, ngCookies, angularCreditCards, uyeBilgiControllerModule, uyeAidatControllerModule, loginControllerModule, uyeOzetControllerModule, uyeService) {
     var module = angular.module('bmoUye', [
             'ngRoute',
             'ngCookies',
+            'credit-cards',
             uyeBilgiControllerModule.name,
             loginControllerModule.name,
             uyeAidatControllerModule.name,

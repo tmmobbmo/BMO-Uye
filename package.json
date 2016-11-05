@@ -6,6 +6,6 @@
         "angular-ui-router": "^0.2.18",
         "angular-route": "^1.4.9",
         "angular-cookies": "*",
-        "angular-rss": "*"
+        "angular-credit-cards": "*"
     }
 }
