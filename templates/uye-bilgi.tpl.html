@@ -1,6 +1,6 @@
 <div ng-include="'templates/left-nav-bar.tpl.html'"></div>
 <div class="main-panel">
-	<nav class="navbar navbar-transparent navbar-absolute">
+	<nav class="navbar navbar-danger navbar-absolute">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse">
@@ -9,7 +9,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">{{ title }}</a>
+				<a class="navbar-brand" href="#">Üyelik Bilgileri</a>
 			</div>
 			<div ng-include="'templates/right-dropdown.tpl.html'"></div>
 		</div>
@@ -44,7 +44,7 @@
                                     <div class="col-md-12">
 										<div class="form-group label-floating">
 											<label class="control-label">İletişim Adresi</label>
-											<input type="text" class="form-control" ng-model="user.iletisimAdresi">
+											<textarea class="form-control" ng-model="user.iletisimAdresi" disabled></textarea>
 										</div>
                                     </div>
                                 </div>
@@ -53,18 +53,18 @@
                                     <div class="col-md-6">
 										<div class="form-group label-floating">
 											<label class="control-label">Cep Telefonu</label>
-											<input type="text" class="form-control" ng-model="user.cepTelNo">
+											<input type="text" class="form-control" ng-model="user.cepTelNo" disabled>
 										</div>
                                     </div>
                                     <div class="col-md-6">
 										<div class="form-group label-floating">
 											<label class="control-label">E-posta Adresi</label>
-											<input type="text" class="form-control" ng-model="user.email">
+											<input type="text" class="form-control" ng-model="user.email" disabled>
 										</div>
                                     </div>
                                 </div>
 
-                                <button type="submit" class="btn btn-success pull-right">Güncelle</button>
+                                <!-- <button type="submit" class="btn btn-success pull-right">Güncelle</button> -->
                                 <div class="clearfix"></div>
                             </form>
                         </div>
@@ -73,14 +73,12 @@
 				<div class="col-md-4">
 					<div class="card card-profile">
 						<div class="card-avatar">
-							<!-- <img class="img" src="../assets/img/faces/marc.jpg" /> -->
-							<img class="img" src="https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-9/601143_10152669552705595_1611742867_n.jpg?oh=1e6a55e755985cc69a42e1a3c0d6020e&oe=58AD15F2" />
+							<img class="img" src="http://www.sbsc.in/images/dummy-profile-pic.png" />
 						</div>
 
 						<div class="content">
 							<h6 class="category text-gray">{{ user.sicilNo }} | {{ user.lisansUnvan }}</h6>
 							<h4 class="card-title">{{ user.ad }} {{ user.soyad }}</h4>
-
 							<!--<a href="ozet.html" class="btn btn-warning btn-round">
 								<i class="material-icons">file_upload</i>
 								Yükle

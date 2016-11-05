@@ -29,6 +29,30 @@ define([
             $scope.errorMessage = "An error occured!";
         });
 
+        Uye.getTrainingCount().then(function successCallback(response) {
+            $scope.trainingCount = response.data;
+        }, function errorCallback(response) {
+            $scope.errorMessage = "An error occured!";
+        });
+
+        Uye.getUpcomingEventCount().then(function successCallback(response) {
+            $scope.upcomingEventCount = response.data;
+        }, function errorCallback(response) {
+            $scope.errorMessage = "An error occured!";
+        });
+
+        Uye.getActiveAnnouncementList().then(function successCallback(response) {
+            $scope.activeAnnouncementList = response.data;
+        }, function errorCallback(response) {
+            $scope.errorMessage = "An error occured!";
+        });
+
+        Uye.getActiveAnnouncementCount().then(function successCallback(response) {
+            $scope.activeAnnouncementCount = response.data;
+        }, function errorCallback(response) {
+            $scope.errorMessage = "An error occured!";
+        });
+
         $scope.logout = function() {
             Uye.deleteAuthorizationCookie();
             $location.path('/');
