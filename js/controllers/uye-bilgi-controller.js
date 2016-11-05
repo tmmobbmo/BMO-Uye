@@ -5,14 +5,14 @@ define([
     '../services/uye-service'
 ], function(angular, angularCookie, uyeServiceModule) {
 
-    var module = angular.module('uyeOzetController', [
+    var module = angular.module('uyeBilgiController', [
         uyeServiceModule.name,
         'ngCookies'
-    ]).controller('UyeOzetController', UyeOzetController)
+    ]).controller('UyeBilgiController', UyeBilgiController);
 
-    UyeOzetController.$inject = ['$rootScope', '$scope', '$location', 'Uye', '$cookies'];
+    UyeBilgiController.$inject = ['$rootScope', '$scope', '$location', 'Uye', '$cookies'];
 
-    function UyeOzetController($rootScope, $scope, $location, Uye, $cookies) {
+    function UyeBilgiController($rootScope, $scope, $location, Uye, $cookies) {
 
         Uye.getMemberInfo().then(function successCallback(response) {
             $rootScope.user = response.data;
@@ -21,11 +21,9 @@ define([
             $scope.errorMessage = "Please try again later";
         });
 
-        Uye.getSummaryDebt().then(function successCallback(response) {
-            $scope.debt = response.data;
-        }, function errorCallback(response) {
-            $scope.errorMessage = "An error occured!";
-        });
+        $scope.updateInfo = function() {
+            console.log("Successfull update: ", $scope.user);
+        };
 
         $scope.logout = function() {
             Uye.deleteAuthorizationCookie();
@@ -33,5 +31,5 @@ define([
         }
     }
 
-    return module;
+    return module
 });

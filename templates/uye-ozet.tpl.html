@@ -15,7 +15,7 @@
                 </a>
             </li>
             <li>
-                <a ng-href="./genel">
+                <a ng-href="./bilgi">
                     <i class="material-icons">person</i>
                     <p>Üyelik Bilgileriniz</p>
                 </a>
@@ -47,11 +47,11 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							   <i class="material-icons">person</i>
-							   <span>Volkan Tokmak - 2778</span>
+							   <span>{{ user.ad }} {{ user.soyad }} - {{ user.sicilNo }}</span>
  						</a>
  						<ul class="dropdown-menu">
 							<li><a href="#">Profil</a></li>
-							<li><a href="#">Çıkış</a></li>
+							<li><a href="" ng-click="logout()">Çıkış</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -101,7 +101,7 @@
 						</div>
 						<div class="card-content">
 							<p class="category">Ödenmemiş Aidat</p>
-							<h3 class="title">300 TL</h3>
+							<h3 class="title">{{debt}} TL</h3>
 						</div>
 						<!-- <div class="card-footer">
 							<div class="stats">

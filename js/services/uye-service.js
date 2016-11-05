@@ -1,103 +1,154 @@
 'use strict';
 
 define([
-	'angular',
-	'angular-cookies'
-], function (angular, angularCookie) {
-	var module = angular.module('uyeService', [
-		'ngCookies'
-	]).factory('Uye', UyeService);
+    'angular',
+    'angular-cookies'
+], function(angular, angularCookie) {
+    var module = angular.module('uyeService', [
+        'ngCookies'
+    ]).factory('Uye', UyeService);
 
-	function UyeService($http, $q, $cookies) {
-		var service = {
-			login,
-			setAuthorizationCookie,
-			getMemberInfo,
-			getAuthorizationCookie,
-	        deleteAuthorizationCookie,
-			getSubscriptionInfo,
-			getSubscriptionDebt,
-			getSubscriptionReceiptList
-		};
+    var rootUrl = 'http://95.85.41.38:8087';
 
+    function UyeService($http, $q, $cookies) {
+        var service = {
+            login,
+            setAuthorizationCookie,
+            getMemberInfo,
+            getAuthorizationCookie,
+            deleteAuthorizationCookie,
+            getSubscriptionInfo,
+            getSubscriptionDebt,
+            getSubscriptionReceiptList,
+            getTrainingCount,
+            getSummaryDebt,
+            getUpcomingEventCount,
+            getActiveAnnouncementList,
+            getActiveAnnouncementCount,
+            getAnnouncementList,
+            createNewAnnouncement
+        };
 
-		function login(username, password) {
-			//return $q(function (resolve, reject) {
+        function login(username, password) {
+            //return $q(function (resolve, reject) {
             //        resolve({"token": "test-token"});
             //    });
-			var data = {
-				"username": username,
-				"password": password
-			};
-			return $http.post('http://95.85.41.38:8087/auth/login', data)
-		};
+            var data = {
+                "username": username,
+                "password": password
+            };
+            return $http.post('http://95.85.41.38:8087/auth/login', data)
+        };
 
-		function sendGetRequest(url, data) {
-			var rootUrl = 'http://95.85.41.38:8087'
-			var req = {
-				method: 'GET',
-				url: rootUrl + url,
-				headers: {
-					'Authorization': getAuthorizationCookie()
-				},
-				data: data
-			};
-			console.log("Req: ", req);
-			return $http(req);
-		};
+        function logout() {
+            return sendGetRequest('/auth/logout'); // TODO: bunun implemente edilmesi gerekli
+        }
 
-		function setAuthorizationCookie(token) {
-			// TODO: Set Expiration time for cookie
-			$cookies.put("Authorization", token);
-		};
+        function sendGetRequest(url, data) {
+            // var rootUrl = 'http://95.85.41.38:8087';
+            var req = {
+                method: 'GET',
+                url: rootUrl + url,
+                headers: {
+                    'Authorization': getAuthorizationCookie()
+                },
+                data: data
+            };
+            console.log("Req - GET: ", req);
+            return $http(req);
+        };
 
-		function getAuthorizationCookie() {
-			return $cookies.get("Authorization");
-		};
+        function sendPostRequest(url, data) {
+            var req = {
+                method: 'POST',
+                url: rootUrl + url,
+                headers: {
+                    'Authorization': getAuthorizationCookie()
+                },
+                data: data
+            };
+            console.log("Req - POST: ", req);
+            return $http(req);
+        };
+
+        function setAuthorizationCookie(token) {
+            // TODO: Set Expiration time for cookie
+            $cookies.put("Authorization", token);
+        };
+
+        function getAuthorizationCookie() {
+            return $cookies.get("Authorization");
+        };
 
         function deleteAuthorizationCookie() {
             $cookies.remove("Authorization");
         };
 
-		function getMemberInfo() {
-			return sendGetRequest('/member/info');
-			return $q(function(resolve, reject){
-				resolve({
-				  "id": null,
-				  "ad": "VOLKAN",
-				  "soyad": "TOKMAK",
-				  "sicilNo": "002778",
-				  "lisansUnvan": "Bilgisayar Mühendisi",
-				  "email": "volkan@tokmak.org",
-				  "cepTelNo": null,
-				  "evTelNo": null,
-				  "fotograf": null,
-				  "iletisimAdresi": "BARBAROS MAH. BİLLUR SK. TEV A. DALLI APT. BLOK  NO: 13  İÇ KAPI NO: 11 ÇANKAYA / ANKARA",
-				  "emailGonderimIzni": true,
-				  "smsGonderimIzni": true,
-				  "postaGonderimIzni": true,
-				  "pushGonderimIzni": false
-				});
-			});
-		};
+        function getMemberInfo() {
+            return sendGetRequest('/member/info');
+        };
 
-		function getSubscriptionInfo() {
-			return sendGetRequest('/subscription/info');
-		};
+        // subscription services
+        function getSubscriptionInfo() {
+            return sendGetRequest('/subscription/info');
+        };
 
-		function getSubscriptionDebt() {
-			return sendGetRequest('/subscription/debt');
-		};
-		
-		function getSubscriptionReceiptList() {
-			return sendGetRequest('/subscription/receipt/list');
-		};
+        function getSubscriptionDebt() {
+            return sendGetRequest('/subscription/debt');
+        };
+
+        function getSubscriptionReceiptList() {
+            return sendGetRequest('/subscription/receipt/list');
+        };
+
+        // !subscription services
+
+        // dashboard services
+
+        function getTrainingCount() {
+            return sendGetRequest('/summary/training/count');
+        }
+
+        function getSummaryDebt() {
+            return sendGetRequest('/summary/debt');
+        }
+
+        function getUpcomingEventCount() {
+            return sendGetRequest('/summary/event/count');
+        }
+
+        function getActiveAnnouncementList() {
+            return sendGetRequest('/summary/announcement/list');
+        }
+
+        function getActiveAnnouncementCount() {
+            return sendGetRequest('/summary/announcement/count');
+        }
+
+        // !dashboard services
+
+        // announcement services 
+
+        function getAnnouncementList() {
+            return sendGetRequest('/announcement/list');
+        }
+
+        function createNewAnnouncement(announcement) {
+            var data = {
+                "title": announcement.title,
+                "detail": announcement.detail
+            };
+            return sendPostRequest('/announcement/create', data);
+            //return $http.post('http://95.85.41.38:8087/announcement/create', data);
+        }
+
+        // !announcemenet services
 
 
-		return service;
-	};
+        return service;
+    };
 
-	UyeService.$inject = ['$http', '$q', '$cookies']
+    UyeService.$inject = ['$http', '$q', '$cookies']
 
-	return module;
+    return module;
 });
