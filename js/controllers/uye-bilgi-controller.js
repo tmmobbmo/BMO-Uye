@@ -27,6 +27,10 @@ define([
             console.log("Successfull update: ", $scope.user);
         };
 
+        $scope.updatePassword = function() {
+            console.log("Password update");
+        };
+
         $scope.logout = function() {
             Uye.deleteAuthorizationCookie();
             $location.path('/');

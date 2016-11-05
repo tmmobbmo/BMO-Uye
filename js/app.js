@@ -4,10 +4,11 @@ define([
     'angular-cookies',
     'controllers/uye-bilgi-controller',
     'controllers/uye-aidat-controller',
+    'controllers/uye-password-controller',
     'controllers/login-controller',
     'controllers/uye-ozet-controller',
     'services/uye-service'
-], function(angular, ngRoute, ngCookies, uyeBilgiControllerModule, uyeAidatControllerModule, loginControllerModule, uyeOzetControllerModule, uyeService) {
+], function(angular, ngRoute, ngCookies, uyeBilgiControllerModule, uyeAidatControllerModule, uyePasswordControllerModule, loginControllerModule, uyeOzetControllerModule, uyeService) {
     var module = angular.module('bmoUye', [
             'ngRoute',
             'ngCookies',
@@ -15,6 +16,7 @@ define([
             loginControllerModule.name,
             uyeAidatControllerModule.name,
             uyeOzetControllerModule.name,
+            uyePasswordControllerModule.name,
             uyeService.name
         ])
         .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
@@ -35,6 +37,10 @@ define([
                 .when('/aidat', {
                     templateUrl: '/templates/uye-aidat.tpl.html',
                     controller: 'AidatController'
+                })
+                .when('/parola', {
+                    templateUrl: '/templates/uye-parola.tpl.html',
+                    controller: 'UyePasswordController'
                 })
                 .otherwise({
                     redirectTo: '/'
