@@ -9,6 +9,7 @@ define([
         uyeServiceModule.name,
         'ngCookies'
     ]).controller('AidatController', AidatController)
+    .filter('yesNo', YesNoFilter)
 
     AidatController.$inject = ['$rootScope', '$scope', '$location', 'Uye', '$cookies'];
 
@@ -35,6 +36,12 @@ define([
             Uye.deleteAuthorizationCookie();
             $location.path('/');
         }
+    };
+
+    function YesNoFilter() {
+        return function (boolean) {
+            return boolean ? 'Yes' : 'No';
+        };
     }
 
     return module

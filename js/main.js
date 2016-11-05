@@ -9,7 +9,8 @@ require.config({
 		'angular-cookies': '../node_modules/angular-cookies/angular-cookies',
 		'jquery': '../assets/js/jquery-3.1.0.min.js',
 		'bootstrap': '../assets/js/bootstrap.min.js',
-		'material': '../assets/js/material.min.js'
+		'material': '../assets/js/material.min.js',
+		'angular-credit-cards': '../assets/js/angular-credit-cards'
 	},
 	shim: {
 		angular: {
@@ -23,6 +24,9 @@ require.config({
         },
         'angular-cookies':{
             deps: ['angular']
+        },
+        'angular-credit-cards':{
+        	deps: ['angular']
         }
 	},
 	deps: ['app']
