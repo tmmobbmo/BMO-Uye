@@ -20,7 +20,7 @@ require.config({
         },
         'angular-route':{
             deps: ['angular']
-        }        ,
+        },
         'angular-cookies':{
             deps: ['angular']
         }
