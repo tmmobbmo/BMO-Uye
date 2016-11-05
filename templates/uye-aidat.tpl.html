@@ -91,7 +91,7 @@
                                     <tr ng-repeat="receipt in receiptInfo">
                                         <td>{{ receipt.makbuzNo > 0 ? receipt.makbuzNo : '-'}}</td>
                                         <td>{{ receipt.ucret }} TL</td>
-                                        <td>{{ receipt.tarih }}</td>
+                                        <td>{{ receipt.tarih | date:'dd-MM-yyyy'}}</td>
                                         <td>{{ receipt.odemeTipi }}</td>
                                     </tr>
                                 </tbody>
