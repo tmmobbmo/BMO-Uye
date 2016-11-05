@@ -1,0 +1,30 @@
+<div class="sidebar" data-color="red" data-image="../assets/img/sidebar-1.jpg">
+	<div class="logo">
+		<a href="https://uye.bmo.org.tr" class="simple-text">
+			<i class="material-icons">more_vert</i>
+			BMO Uye Portali
+		</a>
+	</div>
+	<div class="sidebar-wrapper">
+        <ul class="nav">
+        	<li ng-class="{'active': isOzetActive}">
+                <a ng-href="./ozet">
+                    <i class="material-icons">dashboard</i>
+                    <p>Üye Özet</p>
+                </a>
+            </li>
+            <li ng-class="{'active': isBilgiActive}">
+                <a ng-href="./bilgi">
+                    <i class="material-icons">person</i>
+                    <p>Üyelik Bilgileriniz</p>
+                </a>
+            </li>
+            <li ng-class="{'active': isAidatActive}">
+                <a ng-href="./aidat">
+                    <i class="material-icons">receipt</i>
+                    <p>Aidatlar</p>
+                </a>
+            </li>
+        </ul>
+	</div>
+</div>

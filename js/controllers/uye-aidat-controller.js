@@ -10,9 +10,12 @@ define([
         'ngCookies'
     ]).controller('AidatController', AidatController)
 
-    AidatController.$inject = ['$scope', '$location', 'Uye', '$cookies'];
+    AidatController.$inject = ['$rootScope', '$scope', '$location', 'Uye', '$cookies'];
 
-    function AidatController($scope, $location, Uye, $cookies) {
+    function AidatController($rootScope, $scope, $location, Uye, $cookies) {
+        $rootScope.isOzetActive = false;
+        $rootScope.isBilgiActive = false;
+        $rootScope.isAidatActive = true;
         Uye.getSubscriptionInfo().then(function successCallback(response) {
             console.log("Aidat Response: ", response.data);
             $scope.aidatInfo = response.data;

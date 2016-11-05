@@ -1,33 +1,4 @@
-<div class="sidebar" data-color="red" data-image="../assets/img/sidebar-1.jpg">
-	<div class="logo">
-		<a href="https://uye.bmo.org.tr" class="simple-text">
-			<i class="material-icons">more_vert</i>
-			BMO Uye Portali
-		</a>
-	</div>
-	<div class="sidebar-wrapper">
-        <ul class="nav">
-        	<li class="active">
-                <a ng-href="./ozet">
-                    <i class="material-icons">dashboard</i>
-                    <p>Üye Özet</p>
-                </a>
-            </li>
-            <li>
-                <a ng-href="./bilgi">
-                    <i class="material-icons">person</i>
-                    <p>Üyelik Bilgileriniz</p>
-                </a>
-            </li>
-            <li>
-                <a ng-href="./aidat">
-                    <i class="material-icons">receipt</i>
-                    <p>Aidatlar</p>
-                </a>
-            </li>
-        </ul>
-	</div>
-</div>
+<div ng-include="'templates/left-nav-bar.tpl.html'"></div>
 <div class="main-panel">
 	<nav class="navbar navbar-transparent navbar-absolute">
 		<div class="container-fluid">
@@ -40,20 +11,7 @@
 				</button>
 				<a class="navbar-brand" href="#">{{ title }}</a>
 			</div>
-			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							   <i class="material-icons">person</i>
-							   <span>{{ user.ad }} {{ user.soyad }} - {{ user.sicilNo }}</span>
- 						</a>
- 						<ul class="dropdown-menu">
-							<li><a href="#">Profil</a></li>
-							<li><a href="" ng-click="logout()">Çıkış</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
+			<div ng-include="'templates/right-dropdown.tpl.html'"></div>
 		</div>
 	</nav>
 	<div class="content">
