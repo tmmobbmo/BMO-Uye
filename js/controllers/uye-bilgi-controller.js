@@ -13,7 +13,9 @@ define([
     UyeBilgiController.$inject = ['$rootScope', '$scope', '$location', 'Uye', '$cookies'];
 
     function UyeBilgiController($rootScope, $scope, $location, Uye, $cookies) {
-
+        $rootScope.isOzetActive = false;
+        $rootScope.isBilgiActive = true;
+        $rootScope.isAidatActive = false;
         Uye.getMemberInfo().then(function successCallback(response) {
             $rootScope.user = response.data;
             console.log("User: ", $scope.user);

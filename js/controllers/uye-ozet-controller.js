@@ -13,7 +13,9 @@ define([
     UyeOzetController.$inject = ['$rootScope', '$scope', '$location', 'Uye', '$cookies'];
 
     function UyeOzetController($rootScope, $scope, $location, Uye, $cookies) {
-
+        $rootScope.isOzetActive = true;
+        $rootScope.isBilgiActive = false;
+        $rootScope.isAidatActive = false;
         Uye.getMemberInfo().then(function successCallback(response) {
             $rootScope.user = response.data;
             console.log("User: ", $scope.user);
