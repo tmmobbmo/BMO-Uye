@@ -47,7 +47,7 @@
                                     <th>Kalan Ay</th>
                                     <th>Aidat Tutarı</th>
                                     <th>Kalan Borç</th>
-                                    <th>İşlemler</th>
+                                    <th>Durum</th>
                                 </thead>
                                 <tbody>
                                     <tr ng-repeat="aidat in aidatInfo" ng-class="aidat.kalanAidatUcreti > 0 ? 'danger' : 'success'">
@@ -57,15 +57,11 @@
                                         <td>{{ aidat.kalanAySayisi }}</td>
                                         <td>{{ aidat.aylikAidatUcreti }} TL</td>
                                         <td>{{ aidat.kalanAidatUcreti }} TL</td>
-                                        <td class="td-actions text-right" ng-show="aidat.kalanAidatUcreti == 0">
-                                            <button type="button" class="btn btn-success btn-simple btn-xs">
-                                                <i class="material-icons">check_circle</i>
-                                            </button>
+                                        <td class="td-actions text-right text-success" ng-show="aidat.kalanAidatUcreti == 0">
+                                            <i class="material-icons">check_circle</i>
                                         </td>
-                                        <td class="td-actions text-right" ng-show="aidat.kalanAidatUcreti > 0">
-                                            <button type="button" class="btn btn-danger btn-simple btn-xs">
-                                                <i class="material-icons">warning</i>
-                                            </button>
+                                        <td class="td-actions text-right text-danger" ng-show="aidat.kalanAidatUcreti > 0">
+                                            <i class="material-icons">warning</i>
                                         </td>
                                     </tr>
                                 </tbody>
