@@ -23,12 +23,12 @@
                             <h4 class="title">Parola Güncelle</h4>
                         </div>
                         <div class="card-content">
-                            <form ng-submit="updatePassword()">
+                            <form name="form" ng-submit="updatePassword(oldPassword, newPassword, newPasswordAgain)" role="form">       
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Eski Parola</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" id="oldPassword" name="oldPassword" ng-model="oldPassword" required>
                                         </div>
                                     </div>
                                 </div>
@@ -36,7 +36,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Yeni Parola</label>
-                                            <textarea class="form-control"></textarea>
+                                            <input type="text" class="form-control" id="newPassword" name="newPassword" ng-model="newPassword" required>
                                         </div>
                                     </div>
                                 </div>
@@ -44,11 +44,11 @@
                                     <div class="col-md-12">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Yeni Parola(Tekrar)</label>
-                                            <textarea class="form-control"></textarea>
+                                            <input type="text" class="form-control" id="newPasswordAgain" name="newPasswordAgain" ng-model="newPasswordAgain" required>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-success pull-right">Güncelle</button>
+                                <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-success pull-right">Güncelle</button>
                                 <div class="clearfix"></div>
                             </form>
                         </div>

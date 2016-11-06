@@ -17,8 +17,13 @@ define([
         $rootScope.isBilgiActive = false;
         $rootScope.isAidatActive = false;
 
-        $scope.updatePassword = function() {
+        $scope.updatePassword = function(oldPassword, newPassword, newPasswordAgain) {
             console.log("Password update");
+            Uye.updatePassword(oldPassword, newPassword, newPasswordAgain).then(function successCallback(response) {
+                console.log("succesfully updated!");
+            }, function errorCallback(response) {
+                $scope.errorMessage = "An error occured!";
+            });
         };
 
         $scope.logout = function() {

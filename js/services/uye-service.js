@@ -8,7 +8,7 @@ define([
         'ngCookies'
     ]).factory('Uye', UyeService);
 
-    var rootUrl = 'http://95.85.41.38:8087';
+    var rootUrl = 'http://192.168.1.5:8087';
 
     function UyeService($http, $q, $cookies) {
         var service = {
@@ -26,7 +26,8 @@ define([
             getActiveAnnouncementList,
             getActiveAnnouncementCount,
             getAnnouncementList,
-            createNewAnnouncement
+            createNewAnnouncement,
+            updatePassword
         };
 
         function login(username, password) {
@@ -37,7 +38,7 @@ define([
                 "username": username,
                 "password": password
             };
-            return $http.post('http://95.85.41.38:8087/auth/login', data)
+            return $http.post(rootUrl + '/auth/login', data)
         };
 
         function logout() {
@@ -45,7 +46,6 @@ define([
         }
 
         function sendGetRequest(url, data) {
-            // var rootUrl = 'http://95.85.41.38:8087';
             var req = {
                 method: 'GET',
                 url: rootUrl + url,
@@ -128,7 +128,6 @@ define([
         // !dashboard services
 
         // announcement services 
-
         function getAnnouncementList() {
             return sendGetRequest('/announcement/list');
         }
@@ -141,8 +140,18 @@ define([
             return sendPostRequest('/announcement/create', data);
             //return $http.post('http://95.85.41.38:8087/announcement/create', data);
         }
-
         // !announcemenet services
+
+        // change password
+        function updatePassword(oldPassword, newPassword, newPasswordAgain) {
+            var data = {
+                "eskiParola"        : oldPassword,
+                "yeniParola"        : newPassword,
+                "yeniParolaTekrar"  : newPasswordAgain
+            };
+            return sendPostRequest('/member/change/password', data);
+        }
+        // !change password
 
 
         return service;
