@@ -106,51 +106,74 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="material-icons">clear</i></button>
                 <h5 class="modal-title" id="myModalLabel">Ödeme Ekranı</h5>
             </div>
-            <div class="modal-body">
-                <div>
-                    <form name="ccForm">
+            <div ng-show="!isCreditCardScreen">
+                <div class="modal-body">
+                    <form name="aidatCountForm">
                         <label for="card-number">Ödenecek adet sayısı</label>
                         <select name="aidatCount" id="aidatCount" ng-model="data.model" ng-style="{'margin-left': '10px', 'width': '50px'}" ng-required="true">
                             <option ng-repeat="option in debtCountOptions" value="{{option}}">
                                 {{option}}
                             </option>
                         </select>
-                        <div class="form-group">
-                            <label for="card-number">Kredi Kartı Numarası</label>
-                            <input type="text" class="form-control" id="cardNumber" cc-number cc-eager-type name="ccNumber" ng-model="card.number" ng-required="true">
-                        </div>
-                        <div class="form-group">
-                            <label for="cvc">CVC</label>
-                            <input type="text" class="form-control" id="cvc" cc-cvc cc-type="ccForm.ccNumber.$ccType" name="ccCvc" ng-model="card.cvc" ng-required="true">
-                        </div>
-                        <div class="form-group">
-                            <label for="card-number">Geçerlilik Zamanı</label>
-                            <div class="row" cc-exp>
-                                <div class="col-xs-3">
-                                    <input placeholder="MM" type="text" class="form-control" cc-exp-month name="ccExpMonth" ng-model="card.expiration.month" ng-required="true">
-                                </div>
-                                <div class="col-xs-3">
-                                    <input placeholder="YY" type="text" class="form-control" cc-exp-year name="ccExpYear" ng-model="card.expiration.year" ng-required="true">
-                                </div>
-                            </div>
-                        </div>
                     </form>
                 </div>
+                <div class="modal-footer text-center">
+                    <button type="button" class="btn btn-success" ng-click="setAidatCount(aidatCountForm)" ng-disabled="!aidatCountForm.$valid">
+                        Devam
+                        <div class="ripple-container">
+                            <div class="ripple ripple-on ripple-out" style="left: 47.6562px; top: 7.75px; background-color: rgb(255, 255, 255); transform: scale(14.6621);">
+                            </div>
+                            <div class="ripple ripple-on ripple-out" style="left: 76.6562px; top: 17.75px; background-color: rgb(255, 255, 255); transform: scale(14.6621);">
+                            </div>
+                            <div class="ripple ripple-on ripple-out" style="left: 84.6562px; top: 6.75px; background-color: rgb(255, 255, 255); transform: scale(14.6621);">
+                            </div>
+                            <div class="ripple ripple-on ripple-out" style="left: 23.6562px; top: 25.75px; background-color: rgb(255, 255, 255); transform: scale(14.6621);">
+                            </div>
+                        </div>
+                    </button>
+                </div>
             </div>
-            <div class="modal-footer text-center">
-                <button type="button" class="btn btn-success" ng-click="initiatePaymentRequest(ccForm)" ng-disabled="!ccForm.$valid">
-                    Devam
-                    <div class="ripple-container">
-                        <div class="ripple ripple-on ripple-out" style="left: 47.6562px; top: 7.75px; background-color: rgb(255, 255, 255); transform: scale(14.6621);">
-                        </div>
-                        <div class="ripple ripple-on ripple-out" style="left: 76.6562px; top: 17.75px; background-color: rgb(255, 255, 255); transform: scale(14.6621);">
-                        </div>
-                        <div class="ripple ripple-on ripple-out" style="left: 84.6562px; top: 6.75px; background-color: rgb(255, 255, 255); transform: scale(14.6621);">
-                        </div>
-                        <div class="ripple ripple-on ripple-out" style="left: 23.6562px; top: 25.75px; background-color: rgb(255, 255, 255); transform: scale(14.6621);">
-                        </div>
+            <div ng-show="isCreditCardScreen">
+                <div class="modal-body">
+                    <div>
+                        <form name="ccForm">
+                            <div class="form-group">
+                                <label for="card-number">Kredi Kartı Numarası</label>
+                                <input type="text" class="form-control" id="cardNumber" cc-number cc-eager-type name="ccNumber" ng-model="card.number" ng-required="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="cvc">CVC</label>
+                                <input type="text" class="form-control" id="cvc" cc-cvc cc-type="ccForm.ccNumber.$ccType" name="ccCvc" ng-model="card.cvc" ng-required="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="card-number">Geçerlilik Zamanı</label>
+                                <div class="row" cc-exp>
+                                    <div class="col-xs-3">
+                                        <input placeholder="MM" type="text" class="form-control" cc-exp-month name="ccExpMonth" ng-model="card.expiration.month" ng-required="true">
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <input placeholder="YY" type="text" class="form-control" cc-exp-year name="ccExpYear" ng-model="card.expiration.year" ng-required="true">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                </button>
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="button" class="btn btn-success" ng-click="initiatePaymentRequest(ccForm)" ng-disabled="!ccForm.$valid">
+                        Ode
+                        <div class="ripple-container">
+                            <div class="ripple ripple-on ripple-out" style="left: 47.6562px; top: 7.75px; background-color: rgb(255, 255, 255); transform: scale(14.6621);">
+                            </div>
+                            <div class="ripple ripple-on ripple-out" style="left: 76.6562px; top: 17.75px; background-color: rgb(255, 255, 255); transform: scale(14.6621);">
+                            </div>
+                            <div class="ripple ripple-on ripple-out" style="left: 84.6562px; top: 6.75px; background-color: rgb(255, 255, 255); transform: scale(14.6621);">
+                            </div>
+                            <div class="ripple ripple-on ripple-out" style="left: 23.6562px; top: 25.75px; background-color: rgb(255, 255, 255); transform: scale(14.6621);">
+                            </div>
+                        </div>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

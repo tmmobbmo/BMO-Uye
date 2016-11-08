@@ -27,7 +27,8 @@ define([
             getActiveAnnouncementCount,
             getAnnouncementList,
             createNewAnnouncement,
-            updatePassword
+            updatePassword,
+            sendGarantiPaymentRequest
         };
 
         function login(username, password) {
@@ -70,6 +71,18 @@ define([
             console.log("Req - POST: ", req);
             return $http(req);
         };
+
+        function sendGarantiPaymentRequest() {
+        	var req = {
+                method: 'POST',
+                url: rootUrl + url,
+                data: {
+                	
+                }
+            };
+            console.log("Req - POST: ", req);
+            return $http(req);	
+        }
 
         function setAuthorizationCookie(token) {
             // TODO: Set Expiration time for cookie
