@@ -1,11 +1,10 @@
-@media (min-width: 992px){
-    .typo-line{
+@media (min-width: 992px) {
+    .typo-line {
         padding-left: 140px;
         margin-bottom: 40px;
         position: relative;
     }
-
-    .typo-line .category{
+    .typo-line .category {
         transform: translateY(-50%);
         top: 50%;
         left: 0px;
@@ -13,32 +12,33 @@
     }
 }
 
-#map{
-    position:relative;
-    width:100%;
+#map {
+    position: relative;
+    width: 100%;
     height: calc(100% - 60px);
     margin-top: 70px;
 }
 
-.places-buttons .btn{
+.places-buttons .btn {
     margin-bottom: 30px
 }
 
-.space-70{
+.space-70 {
     height: 70px;
     display: block;
 }
 
-.tim-row{
+.tim-row {
     margin-bottom: 20px;
 }
 
-.tim-typo{
+.tim-typo {
     padding-left: 25%;
     margin-bottom: 40px;
     position: relative;
 }
-.tim-typo .tim-note{
+
+.tim-typo .tim-note {
     bottom: 10px;
     color: #c0c1c2;
     display: block;
@@ -50,9 +50,191 @@
     position: absolute;
     width: 260px;
 }
-.tim-row{
+
+.tim-row {
     padding-top: 50px;
 }
-.tim-row h3{
+
+.tim-row h3 {
     margin-top: 0;
+}
+
+.login-page .page-header {
+    min-height: 100vh;
+    height: auto;
+}
+
+.login-page .page-header .container {
+    padding-top: 20vh;
+}
+
+.login-page .footer .container {
+    padding: 0;
+}
+
+.login-page .footer .copyright,
+.login-page .footer a {
+    color: #FFFFFF;
+}
+
+.login-page .navbar-transparent {
+    padding-top: 25px;
+}
+
+.page-header {
+    height: 60vh;
+}
+
+.page-header .container {
+    padding-top: 20vh;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.page-header .title {
+    color: #FFFFFF;
+}
+
+.page-header {
+    background-size: cover;
+    height: 60vh;
+}
+
+.page-header .container {
+    padding-top: 20vh;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.page-header .title {
+    color: #FFFFFF;
+}
+
+.page-header {
+    height: auto;
+    min-height: 100vh;
+}
+
+.page-header {
+    padding: 30px 0;
+}
+
+.page-header {
+    padding: 0 30px;
+}
+
+.header-filter {
+    position: relative;
+}
+
+.header-filter:before,
+.header-filter:after {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: block;
+    left: 0;
+    top: 0;
+    content: "";
+}
+
+.header-filter::before {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.header-filter .container {
+    z-index: 2;
+    position: relative;
+}
+
+.header-filter[filter-color="purple"]:after,
+.header-filter[filter-color="primary"]:after {
+    background: rgba(225, 190, 231, 0.56);
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(60deg, rgba(225, 190, 231, 0.56), rgba(186, 104, 200, 0.95));
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(60deg, rgba(225, 190, 231, 0.56), rgba(186, 104, 200, 0.95));
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(60deg, rgba(225, 190, 231, 0.56), rgba(186, 104, 200, 0.95));
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(60deg, rgba(225, 190, 231, 0.56), rgba(186, 104, 200, 0.95));
+    /* Standard syntax */
+}
+
+.header-filter[filter-color="blue"]:after,
+.header-filter[filter-color="info"]:after {
+    background: rgba(178, 235, 242, 0.56);
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(60deg, rgba(178, 235, 242, 0.56), rgba(77, 208, 225, 0.95));
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(60deg, rgba(178, 235, 242, 0.56), rgba(77, 208, 225, 0.95));
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(60deg, rgba(178, 235, 242, 0.56), rgba(77, 208, 225, 0.95));
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(60deg, rgba(178, 235, 242, 0.56), rgba(77, 208, 225, 0.95));
+    /* Standard syntax */
+}
+
+.header-filter[filter-color="green"]:after,
+.header-filter[filter-color="success"]:after {
+    background: rgba(165, 214, 167, 0.56);
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(60deg, rgba(165, 214, 167, 0.56), rgba(102, 187, 106, 0.95));
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(60deg, rgba(165, 214, 167, 0.56), rgba(102, 187, 106, 0.95));
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(60deg, rgba(165, 214, 167, 0.56), rgba(102, 187, 106, 0.95));
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(60deg, rgba(165, 214, 167, 0.56), rgba(102, 187, 106, 0.95));
+    /* Standard syntax */
+}
+
+.header-filter[filter-color="orange"]:after,
+.header-filter[filter-color="warning"]:after {
+    background: rgba(255, 224, 178, 0.56);
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(60deg, rgba(255, 224, 178, 0.56), rgba(255, 183, 77, 0.95));
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(60deg, rgba(255, 224, 178, 0.56), rgba(255, 183, 77, 0.95));
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(60deg, rgba(255, 224, 178, 0.56), rgba(255, 183, 77, 0.95));
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(60deg, rgba(255, 224, 178, 0.56), rgba(255, 183, 77, 0.95));
+    /* Standard syntax */
+}
+
+.header-filter[filter-color="red"]:after,
+.header-filter[filter-color="danger"]:after {
+    background: rgba(239, 154, 154, 0.56);
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(60deg, rgba(239, 154, 154, 0.56), rgba(239, 83, 80, 0.95));
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(60deg, rgba(239, 154, 154, 0.56), rgba(239, 83, 80, 0.95));
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(60deg, rgba(239, 154, 154, 0.56), rgba(239, 83, 80, 0.95));
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(60deg, rgba(239, 154, 154, 0.56), rgba(239, 83, 80, 0.95));
+    /* Standard syntax */
+}
+
+.header-filter[filter-color="rose"]:after {
+    background: rgba(248, 187, 208, 0.56);
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(60deg, rgba(248, 187, 208, 0.56), rgba(240, 98, 146, 0.95));
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(60deg, rgba(248, 187, 208, 0.56), rgba(240, 98, 146, 0.95));
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(60deg, rgba(248, 187, 208, 0.56), rgba(240, 98, 146, 0.95));
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(60deg, rgba(248, 187, 208, 0.56), rgba(240, 98, 146, 0.95));
+    /* Standard syntax */
+}
+
+.presentation-page .header-filter:after,
+.index-page .header-filter:after {
+    background: rgba(132, 13, 121, 0.88);
+    background: linear-gradient(45deg, rgba(132, 13, 121, 0.88) 0%, rgba(208, 44, 180, 0.31) 100%);
+    background: -moz-linear-gradient(135deg, rgba(132, 13, 121, 0.88) 0%, rgba(208, 44, 180, 0.31) 100%);
+    background: -webkit-linear-gradient(135deg, rgba(132, 13, 121, 0.88) 0%, rgba(208, 44, 180, 0.31) 100%);
 }

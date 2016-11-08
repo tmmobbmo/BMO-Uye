@@ -1,85 +1,104 @@
 <div ng-include="'templates/left-nav-bar.tpl.html'"></div>
 <div class="main-panel">
-	<nav class="navbar navbar-danger navbar-absolute">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Üyelik Bilgileri</a>
-			</div>
-			<div ng-include="'templates/right-dropdown.tpl.html'"></div>
-		</div>
-	</nav>
-	<div class="content">
+    <nav class="navbar navbar-danger navbar-absolute">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Üyelik Bilgileri</a>
+            </div>
+            <div ng-include="'templates/right-dropdown.tpl.html'"></div>
+        </div>
+    </nav>
+    <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header" data-background-color="red">
                             <h4 class="title">Bilgi Güncelle</h4>
-							<p class="category">Üyelik bilgilerinizi kontrol edin</p>
+                            <p class="category">Üyelik bilgilerinizi kontrol edin</p>
                         </div>
                         <div class="card-content">
                             <form ng-submit="updateInfo()">
                                 <div class="row">
                                     <div class="col-md-6">
-										<div class="form-group label-floating">
-											<label class="control-label">İsim</label>
-											<input type="text" class="form-control" ng-model="user.ad" disabled>
-										</div>
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">İsim</label>
+                                            <input type="text" class="form-control" ng-model="user.ad" disabled>
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
-										<div class="form-group label-floating">
-											<label class="control-label">Soyad</label>
-											<input type="text" class="form-control" ng-model="user.soyad" disabled>
-										</div>
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Soyad</label>
+                                            <input type="text" class="form-control" ng-model="user.soyad" disabled>
+                                        </div>
                                     </div>
                                 </div>
-
                                 <div class="row">
                                     <div class="col-md-12">
-										<div class="form-group label-floating">
-											<label class="control-label">İletişim Adresi</label>
-											<textarea class="form-control" ng-model="user.iletisimAdresi" disabled></textarea>
-										</div>
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">İletişim Adresi</label>
+                                            <textarea class="form-control" ng-model="user.iletisimAdresi" disabled></textarea>
+                                        </div>
                                     </div>
                                 </div>
-
                                 <div class="row">
                                     <div class="col-md-6">
-										<div class="form-group label-floating">
-											<label class="control-label">Cep Telefonu</label>
-											<input type="text" class="form-control" ng-model="user.cepTelNo" disabled>
-										</div>
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">Cep Telefonu</label>
+                                            <input type="text" class="form-control" ng-model="user.cepTelNo" disabled>
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
-										<div class="form-group label-floating">
-											<label class="control-label">E-posta Adresi</label>
-											<input type="text" class="form-control" ng-model="user.email" disabled>
-										</div>
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">E-posta Adresi</label>
+                                            <input type="text" class="form-control" ng-model="user.email" disabled>
+                                        </div>
                                     </div>
                                 </div>
-
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="togglebutton">
+                                            <label>
+                                                <input type="checkbox" ng-checked="{{ user.emailGonderimIzni }}" disabled><span class="toggle"></span> E-posta izni
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="togglebutton">
+                                            <label>
+                                                <input type="checkbox" ng-checked="{{ user.smsGonderimIzni }}" disabled><span class="toggle"></span> SMS izni
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="togglebutton">
+                                            <label>
+                                                <input type="checkbox" ng-checked="{{ user.postaGonderimIzni }}" disabled><span class="toggle"></span> Posta izni
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
                                 <!-- <button type="submit" class="btn btn-success pull-right">Güncelle</button> -->
                                 <div class="clearfix"></div>
                             </form>
                         </div>
                     </div>
                 </div>
-				<div class="col-md-4">
-					<div class="card card-profile">
-						<div class="card-avatar">
-							<img class="img" src="http://www.sbsc.in/images/dummy-profile-pic.png" />
-						</div>
-
-						<div class="content">
-							<h6 class="category text-gray">{{ user.sicilNo }} | {{ user.lisansUnvan }}</h6>
-							<h4 class="card-title">{{ user.ad }} {{ user.soyad }}</h4>
-							<!--<a href="ozet.html" class="btn btn-warning btn-round">
+                <div class="col-md-4">
+                    <div class="card card-profile">
+                        <div class="card-avatar">
+                            <img class="img" src="http://www.sbsc.in/images/dummy-profile-pic.png" />
+                        </div>
+                        <div class="content">
+                            <h6 class="category text-gray">{{ user.sicilNo }} | {{ user.lisansUnvan }}</h6>
+                            <h4 class="card-title">{{ user.ad }} {{ user.soyad }}</h4>
+                            <!--<a href="ozet.html" class="btn btn-warning btn-round">
 								<i class="material-icons">file_upload</i>
 								Yükle
 							</a>
@@ -87,9 +106,9 @@
 								<i class="material-icons">camera_alt</i>
 								Web Cam
 							</a>-->
-						</div>
-					</div>
-    			</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

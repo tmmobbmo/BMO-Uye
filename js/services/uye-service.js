@@ -8,7 +8,7 @@ define([
         'ngCookies'
     ]).factory('Uye', UyeService);
 
-    var rootUrl = 'http://192.168.1.101:8087';
+    var rootUrl = 'http://192.168.1.103:8087';
 
     function UyeService($http, $q, $cookies) {
         var service = {
@@ -138,7 +138,6 @@ define([
                 "detail": announcement.detail
             };
             return sendPostRequest('/announcement/create', data);
-            //return $http.post('http://95.85.41.38:8087/announcement/create', data);
         }
         // !announcemenet services
 
