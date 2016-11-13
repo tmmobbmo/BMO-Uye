@@ -8,8 +8,10 @@ define([
     'controllers/uye-password-controller',
     'controllers/login-controller',
     'controllers/uye-ozet-controller',
+    'controllers/payment-success-controller',
+    'controllers/payment-failure-controller',
     'services/uye-service'
-], function(angular, ngRoute, ngCookies, angularCreditCards, uyeBilgiControllerModule, uyeAidatControllerModule, uyePasswordControllerModule, loginControllerModule, uyeOzetControllerModule, uyeService) {
+], function(angular, ngRoute, ngCookies, angularCreditCards, uyeBilgiControllerModule, uyeAidatControllerModule, uyePasswordControllerModule, loginControllerModule, uyeOzetControllerModule, paymentSuccessControllerModule, paymentFailureControllerModule, uyeService) {
 
     var module = angular.module('bmoUye', [
             'ngRoute',
@@ -20,6 +22,8 @@ define([
             uyeAidatControllerModule.name,
             uyeOzetControllerModule.name,
             uyePasswordControllerModule.name,
+            paymentSuccessControllerModule.name,
+            paymentFailureControllerModule.name,
             uyeService.name
         ])
         .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
@@ -44,6 +48,14 @@ define([
                 .when('/parola', {
                     templateUrl: '/templates/uye-parola.tpl.html',
                     controller: 'UyePasswordController'
+                })
+                .when('/success', {
+                    templateUrl: '/templates/payment-success.tpl.html',
+                    controller: 'PaymentSuccessController'
+                })
+                .when('/fail', {
+                    templateUrl: '/templates/payment-failure.tpl.html',
+                    controller: 'PaymentFailureController'
                 })
                 .otherwise({
                     redirectTo: '/'

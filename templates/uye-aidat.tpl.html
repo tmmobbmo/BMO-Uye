@@ -136,43 +136,51 @@
             <div ng-show="isCreditCardScreen">
                 <div class="modal-body">
                     <div>
-                        <form name="ccForm">
+                        <form name="ccForm" action="https://sanalposprovtest.garanti.com.tr/servlet/gt3dengine" method="POST">
                             <div class="form-group">
                                 <label for="card-number">Kredi Kartı Numarası</label>
-                                <input type="text" class="form-control" id="cardNumber" cc-number cc-eager-type name="ccNumber" ng-model="card.number" ng-required="true">
+                                <input type="text" class="form-control" id="cardNumber" cc-number cc-eager-type name="cardnumber" ng-model="card.number" ng-required="true">
                             </div>
                             <div class="form-group">
                                 <label for="cvc">CVC</label>
-                                <input type="text" class="form-control" id="cvc" cc-cvc cc-type="ccForm.ccNumber.$ccType" name="ccCvc" ng-model="card.cvc" ng-required="true">
+                                <input type="text" class="form-control" id="cvc" cc-cvc cc-type="ccForm.ccNumber.$ccType" name="cardcvv2" ng-model="card.cvc" ng-required="true">
                             </div>
                             <div class="form-group">
                                 <label for="card-number">Geçerlilik Zamanı</label>
                                 <div class="row" cc-exp>
                                     <div class="col-xs-3">
-                                        <input placeholder="MM" type="text" class="form-control" cc-exp-month name="ccExpMonth" ng-model="card.expiration.month" ng-required="true">
+                                        <input placeholder="MM" type="text" class="form-control" cc-exp-month name="cardexpiredatemonth" ng-model="card.expiration.month" ng-required="true">
                                     </div>
                                     <div class="col-xs-3">
-                                        <input placeholder="YY" type="text" class="form-control" cc-exp-year name="ccExpYear" ng-model="card.expiration.year" ng-required="true">
+                                        <input placeholder="YY" type="text" class="form-control" cc-exp-year name="cardexpiredateyear" ng-model="card.expiration.year" ng-required="true">
                                     </div>
                                 </div>
                             </div>
+                            <input type="hidden" name="refreshtime" > 
+                            <input type="hidden" name="mode" value="PROD">
+                            <input type="hidden" name="apiversion" value="v0.01"> 
+                            <input type="hidden" name="terminalprovuserid" value="PROVAUT"> 
+                            <input type="hidden" name="terminaluserid" value="webpage"> 
+                            <input type="hidden" name="terminalmerchantid" value="7000679"> 
+                            <input type="hidden" name="txntype" value="sales"> 
+                            <input type="hidden" name="txnamount" value="1250"> 
+                            <input type="hidden" name="txncurrencycode" value="949"> 
+                            <input type="hidden" name="txninstallmentcount"> 
+                            <input type="hidden" name="orderid" value="0000000001405"> 
+                            <input type="hidden" name="terminalid" value="30691297"> 
+                            <input type="hidden" name="successurl" value="https://www.twitter.com"> 
+                            <input type="hidden" name="errorurl" value="https://www.google.com"> 
+                            <input type="hidden" name="customeripaddress" value="176.239.7.135">
+                            <input type="hidden" name="customeremailaddress" value="ozgen.muzac@gmail.com">
+                            <input type="hidden" name="secure3dhash" ng-value="secureHash"> 
+                            <input type="hidden" name="txntimestamp" value="09/11/201618:44:29">
+                            <input type="hidden" name="secure3dsecuritylevel" value="3D">
+                            <div class="modal-footer text-center">
+                                <!--<input type="submit" class="btn btn-success" ng-disabled="!ccForm.$valid" name="submit" value="Ödeme Yap">-->
+                                <input type="submit" class="btn btn-success" name="submit" value="Ödeme Yap">
+                            </div>
                         </form>
                     </div>
-                </div>
-                <div class="modal-footer text-center">
-                    <button type="button" class="btn btn-success" ng-click="initiatePaymentRequest(ccForm)" ng-disabled="!ccForm.$valid">
-                        Ode
-                        <div class="ripple-container">
-                            <div class="ripple ripple-on ripple-out" style="left: 47.6562px; top: 7.75px; background-color: rgb(255, 255, 255); transform: scale(14.6621);">
-                            </div>
-                            <div class="ripple ripple-on ripple-out" style="left: 76.6562px; top: 17.75px; background-color: rgb(255, 255, 255); transform: scale(14.6621);">
-                            </div>
-                            <div class="ripple ripple-on ripple-out" style="left: 84.6562px; top: 6.75px; background-color: rgb(255, 255, 255); transform: scale(14.6621);">
-                            </div>
-                            <div class="ripple ripple-on ripple-out" style="left: 23.6562px; top: 25.75px; background-color: rgb(255, 255, 255); transform: scale(14.6621);">
-                            </div>
-                        </div>
-                    </button>
                 </div>
             </div>
         </div>

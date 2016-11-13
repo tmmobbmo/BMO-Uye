@@ -49,6 +49,13 @@ define([
 
         $scope.setAidatCount = function(aidatCountForm) {
             var aidatCount = aidatCountForm.aidatCount.$modelValue;
+            //$scope.secureHash = hashGenerate();
+            var secureCode = sha1Hash("123qweASD" + "030691297").toUpperCase();
+            console.log("secureCode: ", secureCode);
+            // String hashData = getTerminalID() + getSiparis().getSiparisno() + amount + getOkURL() + getFailURL() + "sales" + "" + getStoreKey() + securityCode;
+            var hashData = "30691297" + "0000000001405" + "1250" + "https://www.twitter.com" + "https://www.google.com" + "sales" + "" + "12345678" + secureCode;
+            $scope.secureHash = sha1Hash(hashData).toUpperCase();
+            console.log("hash: ", $scope.secureHash);
             $scope.isCreditCardScreen = true;
         }
 
@@ -58,7 +65,7 @@ define([
             var ccExpMonth = ccForm.ccExpMonth.$modelValue;
             var ccExpYear = ccForm.ccExpYear.$modelValue;
             console.log("Values: ", ccNumber, ccCvc, ccExpMonth, ccExpYear);
-            var hash = hashGenerate();
+            
         };
         ////////////////////////////////////
         function sha1Hash(msg)
@@ -164,15 +171,16 @@ define([
 
         function hashGenerate(){
             //terminalId + orderid + amount + okurl + failurl + islemtipi + taksit + storekey + provUser.getPasswordText()  
-            var hash = sha1Hash("30691297" + 
-                            "deneme"+
+            console.log("Hededededede");
+            var hash = sha1Hash("030691297" + 
+                            "0000000001405"+
                             "1250"+
                             "https://www.google.com"+
-                            "https://www.facebook.com"+
+                            "https://www.twitter.com"+
                             "sales"+
-                            "0"+
+                            ""+
                             "12345678"+
-                            "isiUVsvdKFG5WG2qk1UpHK252Ik=").toUpperCase();
+                            "123qweASD").toUpperCase();
 
             console.log("Hash: ", hash);
                             
