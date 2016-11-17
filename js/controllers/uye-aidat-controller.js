@@ -53,7 +53,7 @@ define([
             var secureCode = sha1Hash("123qweASD" + "030691297").toUpperCase();
             console.log("secureCode: ", secureCode);
             // String hashData = getTerminalID() + getSiparis().getSiparisno() + amount + getOkURL() + getFailURL() + "sales" + "" + getStoreKey() + securityCode;
-            var hashData = "30691297" + "0000000001405" + "1250" + "https://www.twitter.com" + "https://www.google.com" + "sales" + "" + "12345678" + secureCode;
+            var hashData = "30691297" + "0000000001405" + "1250" + "http://uye.bmo.org.tr/success" + "http://uye.bmo.org.tr/fail" + "sales" + "" + "12345678" + secureCode;
             $scope.secureHash = sha1Hash(hashData).toUpperCase();
             console.log("hash: ", $scope.secureHash);
             $scope.isCreditCardScreen = true;

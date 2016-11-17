@@ -11,7 +11,7 @@ define([
     PaymentFailureController.$inject = ['$rootScope', '$scope', '$location', 'Uye', '$cookies'];
 
     function PaymentFailureController($rootScope, $scope, $location, Uye, $cookies) {
-        $console.log("In failure controller");
+        console.log("In failure controller");
     }
 
     return module;
