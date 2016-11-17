@@ -31,7 +31,8 @@ define([
             $locationProvider.hashPrefix('!');
             $routeProvider
                 .when('/', {
-                    templateUrl: '/templates/login.tpl.html'
+                    templateUrl: '/templates/login.tpl.html',
+                    controller: 'LoginController'
                 })
                 .when('/ozet', {
                     templateUrl: '/templates/uye-ozet.tpl.html',
