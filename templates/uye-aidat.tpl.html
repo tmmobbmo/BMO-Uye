@@ -161,19 +161,28 @@
                             <input type="hidden" name="apiversion" value="v0.01"> 
                             <input type="hidden" name="terminalprovuserid" value="PROVAUT"> 
                             <input type="hidden" name="terminaluserid" value="webpage"> 
-                            <input type="hidden" name="terminalmerchantid" value="7000679"> 
+                            <input type="hidden" name="terminalmerchantid" ng-value="terminalMerchantId"> 
                             <input type="hidden" name="txntype" value="sales"> 
-                            <input type="hidden" name="txnamount" value="1250"> 
+                            <input type="hidden" name="txnamount" ng-value="txnAmount"> 
                             <input type="hidden" name="txncurrencycode" value="949"> 
                             <input type="hidden" name="txninstallmentcount"> 
+<<<<<<< Updated upstream
                             <input type="hidden" name="orderid" value="0000000001405"> 
                             <input type="hidden" name="terminalid" value="30691297"> 
                             <input type="hidden" name="successurl" value="http://uye.bmo.org.tr/success"> 
                             <input type="hidden" name="errorurl" value="http://uye.bmo.org.tr/fail"> 
                             <input type="hidden" name="customeripaddress" value="176.239.7.135">
                             <input type="hidden" name="customeremailaddress" value="ozgen.muzac@gmail.com">
+=======
+                            <input type="hidden" name="orderid" ng-value="orderId"> 
+                            <input type="hidden" name="terminalid" ng-value="terminalUserId"> 
+                            <input type="hidden" name="successurl" ng-value="successUrl"> 
+                            <input type="hidden" name="errorurl" ng-value="failUrl"> 
+                            <input type="hidden" name="customeripaddress" ng-value="customerIpAddress">
+                            <input type="hidden" name="customeremailaddress" ng-value="customerMailAdress">
+>>>>>>> Stashed changes
                             <input type="hidden" name="secure3dhash" ng-value="secureHash"> 
-                            <input type="hidden" name="txntimestamp" value="09/11/201618:44:29">
+                            <input type="hidden" name="txntimestamp" ng-value="txntimestamp">
                             <input type="hidden" name="secure3dsecuritylevel" value="3D">
                             <div class="modal-footer text-center">
                                 <!--<input type="submit" class="btn btn-success" ng-disabled="!ccForm.$valid" name="submit" value="Ödeme Yap">-->

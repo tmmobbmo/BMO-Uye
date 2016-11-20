@@ -49,14 +49,36 @@ define([
 
         $scope.setAidatCount = function(aidatCountForm) {
             var aidatCount = aidatCountForm.aidatCount.$modelValue;
-            //$scope.secureHash = hashGenerate();
-            var secureCode = sha1Hash("123qweASD" + "030691297").toUpperCase();
-            console.log("secureCode: ", secureCode);
-            // String hashData = getTerminalID() + getSiparis().getSiparisno() + amount + getOkURL() + getFailURL() + "sales" + "" + getStoreKey() + securityCode;
-            var hashData = "30691297" + "0000000001405" + "1250" + "http://uye.bmo.org.tr/success" + "http://uye.bmo.org.tr/fail" + "sales" + "" + "12345678" + secureCode;
-            $scope.secureHash = sha1Hash(hashData).toUpperCase();
-            console.log("hash: ", $scope.secureHash);
-            $scope.isCreditCardScreen = true;
+//<<<<<<< Updated upstream
+            // //$scope.secureHash = hashGenerate();
+            // var secureCode = sha1Hash("123qweASD" + "030691297").toUpperCase();
+            // console.log("secureCode: ", secureCode);
+            // // String hashData = getTerminalID() + getSiparis().getSiparisno() + amount + getOkURL() + getFailURL() + "sales" + "" + getStoreKey() + securityCode;
+            // var hashData = "30691297" + "0000000001405" + "1250" + "http://uye.bmo.org.tr/success" + "http://uye.bmo.org.tr/fail" + "sales" + "" + "12345678" + secureCode;
+            // $scope.secureHash = sha1Hash(hashData).toUpperCase();
+            // console.log("hash: ", $scope.secureHash);
+            // $scope.isCreditCardScreen = true;
+//=======
+            // var secureCode = sha1Hash("123qweASD" + "030691297").toUpperCase();
+            // console.log("secureCode: ", secureCode);
+            // // String hashData = getTerminalID() + getSiparis().getSiparisno() + amount + getOkURL() + getFailURL() + "sales" + "" + getStoreKey() + securityCode;
+            // var hashData = "30691297" + "0000000000728" + "1250" + "http://facebook.com" + "http://twitter.com" + "sales" + "" + "12345678" + secureCode;
+            Uye.sendGarantiPaymentRequest(aidatCount).then(function successCallback(response) {
+                console.log("Response from initiate: ", response.data);
+                $scope.txnAmount = response.data.amount;
+                $scope.customerIpAddress = response.data.customerIpAddress;
+                $scope.customerMailAdress = response.data.customerMailAddress;
+                $scope.orderId = response.data.orderId
+                $scope.secureHash = response.data.secure3dhash;
+                $scope.terminalMerchantId = response.data.terminalMerchantId;
+                $scope.successUrl = response.data.successUrl;
+                $scope.failUrl = response.data.failUrl;
+                $scope.terminalUserId = response.data.terminalId;
+                $scope.txntimestamp = response.data.txnTime;
+                $scope.isCreditCardScreen = true;
+            }, function errorCallback(response) {})
+            // $scope.secureHash = sha1Hash(hashData).toUpperCase();
+            // console.log("hash: ", $scope.secureHash);
         }
 
         $scope.initiatePaymentRequest = function(ccForm) {

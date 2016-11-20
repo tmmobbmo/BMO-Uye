@@ -10,7 +10,7 @@ define([
 
     var rootUrl = 'api';
 
-    function UyeService($http, $q, $cookies) {
+    function UyeService($http, $q, $cookies, $interpolate) {
         var service = {
             login,
             setAuthorizationCookie,
@@ -72,16 +72,10 @@ define([
             return $http(req);
         };
 
-        function sendGarantiPaymentRequest() {
-        	var req = {
-                method: 'POST',
-                url: rootUrl + url,
-                data: {
-                	
-                }
-            };
-            console.log("Req - POST: ", req);
-            return $http(req);	
+        function sendGarantiPaymentRequest(paymentAmount) {
+            var url = $interpolate('/subscription/pay/{{paymentAmount}}')({paymentAmount: paymentAmount});
+            console.log("Url: ", url);
+        	return sendPostRequest(url);
         }
 
         function setAuthorizationCookie(token) {
@@ -169,7 +163,7 @@ define([
         return service;
     };
 
-    UyeService.$inject = ['$http', '$q', '$cookies']
+    UyeService.$inject = ['$http', '$q', '$cookies', '$interpolate']
 
     return module;
 });
