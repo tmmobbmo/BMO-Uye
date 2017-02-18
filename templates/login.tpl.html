@@ -19,6 +19,11 @@
                             </div>
                         </div>
                         <div class="card-content">
+
+                            <div class="alert alert-warning" ng-class="{ 'hidden': ! errorMessage }">
+                                <span>{{errorMessage}}</span>
+                            </div>
+
                             <div class="input-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
                                 <span class="input-group-addon">
                                         <i class="material-icons">fingerprint</i>

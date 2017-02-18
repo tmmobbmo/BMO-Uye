@@ -13,6 +13,7 @@ define([
     LoginController.$inject = ['$scope', '$location', 'Uye', '$cookies'];
 
     function LoginController($scope, $location, Uye, $cookies) {
+
         if (Uye.getAuthorizationCookie()) {
             $location.path('/ozet');
         }
@@ -21,10 +22,10 @@ define([
                 Uye.setAuthorizationCookie(response.data.token);
                 $location.path('/ozet');
             }, function errorCallback(response) {
-                $scope.errorMessage = "Please check your id and password";
+                $scope.errorMessage = "Kullanıcı adınızı ve şifrenizi kontrol ederek tekrar deneyiniz!";
             });
         };
     }
 
-    return module
+    return module;
 });
