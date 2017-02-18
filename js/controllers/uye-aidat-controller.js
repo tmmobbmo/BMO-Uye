@@ -43,26 +43,16 @@ define([
         }, function errorCallback(response) {});
 
         $scope.logout = function() {
-            Uye.deleteAuthorizationCookie();
-            $location.path('/');
+            Uye.logout().then(function successCallback(response) {
+              Uye.deleteAuthorizationCookie();
+              $location.path('/');
+            }, function errorCallback(response) {
+              console.log(response);
+            });
         };
 
         $scope.setAidatCount = function(aidatCountForm) {
             var aidatCount = aidatCountForm.aidatCount.$modelValue;
-//<<<<<<< Updated upstream
-            // //$scope.secureHash = hashGenerate();
-            // var secureCode = sha1Hash("123qweASD" + "030691297").toUpperCase();
-            // console.log("secureCode: ", secureCode);
-            // // String hashData = getTerminalID() + getSiparis().getSiparisno() + amount + getOkURL() + getFailURL() + "sales" + "" + getStoreKey() + securityCode;
-            // var hashData = "30691297" + "0000000001405" + "1250" + "http://uye.bmo.org.tr/success" + "http://uye.bmo.org.tr/fail" + "sales" + "" + "12345678" + secureCode;
-            // $scope.secureHash = sha1Hash(hashData).toUpperCase();
-            // console.log("hash: ", $scope.secureHash);
-            // $scope.isCreditCardScreen = true;
-//=======
-            // var secureCode = sha1Hash("123qweASD" + "030691297").toUpperCase();
-            // console.log("secureCode: ", secureCode);
-            // // String hashData = getTerminalID() + getSiparis().getSiparisno() + amount + getOkURL() + getFailURL() + "sales" + "" + getStoreKey() + securityCode;
-            // var hashData = "30691297" + "0000000000728" + "1250" + "http://facebook.com" + "http://twitter.com" + "sales" + "" + "12345678" + secureCode;
             Uye.sendGarantiPaymentRequest(aidatCount).then(function successCallback(response) {
                 console.log("Response from initiate: ", response.data);
                 $scope.txnAmount = response.data.amount;
@@ -87,7 +77,7 @@ define([
             var ccExpMonth = ccForm.ccExpMonth.$modelValue;
             var ccExpYear = ccForm.ccExpYear.$modelValue;
             console.log("Values: ", ccNumber, ccCvc, ccExpMonth, ccExpYear);
-            
+
         };
         ////////////////////////////////////
         function sha1Hash(msg)
@@ -96,8 +86,8 @@ define([
             var K = [0x5a827999, 0x6ed9eba1, 0x8f1bbcdc, 0xca62c1d6];
 
 
-            // PREPROCESSING 
-         
+            // PREPROCESSING
+
             msg += String.fromCharCode(0x80); // add trailing '1' bit (+ 0's padding) to string [§5.1.1]
 
             // convert string msg into 512-bit/16-integer blocks arrays of ints [§5.2.1]
@@ -107,7 +97,7 @@ define([
             for (var i=0; i<N; i++) {
                 M[i] = new Array(16);
                 for (var j=0; j<16; j++) {  // encode 4 chars per integer, big-endian encoding
-                    M[i][j] = (msg.charCodeAt(i*64+j*4)<<24) | (msg.charCodeAt(i*64+j*4+1)<<16) | 
+                    M[i][j] = (msg.charCodeAt(i*64+j*4)<<24) | (msg.charCodeAt(i*64+j*4+1)<<16) |
                               (msg.charCodeAt(i*64+j*4+2)<<8) | (msg.charCodeAt(i*64+j*4+3));
                 }
             }
@@ -149,9 +139,9 @@ define([
 
                 // 4 - compute the new intermediate hash value
                 H0 = (H0+a) & 0xffffffff;  // note 'addition modulo 2^32'
-                H1 = (H1+b) & 0xffffffff; 
-                H2 = (H2+c) & 0xffffffff; 
-                H3 = (H3+d) & 0xffffffff; 
+                H1 = (H1+b) & 0xffffffff;
+                H2 = (H2+c) & 0xffffffff;
+                H3 = (H3+d) & 0xffffffff;
                 H4 = (H4+e) & 0xffffffff;
             }
 
@@ -161,7 +151,7 @@ define([
         //
         // function 'f' [§4.1.1]
         //
-        function f(s, x, y, z) 
+        function f(s, x, y, z)
         {
             switch (s) {
             case 0: return (x & y) ^ (~x & z);           // Ch()
@@ -180,8 +170,8 @@ define([
         }
 
         //
-        // extend Number class with a tailored hex-string method 
-        //   (note toString(16) is implementation-dependant, and 
+        // extend Number class with a tailored hex-string method
+        //   (note toString(16) is implementation-dependant, and
         //   in IE returns signed numbers when used on full words)
         //
         Number.prototype.toHexStr = function()
@@ -192,9 +182,9 @@ define([
         }
 
         function hashGenerate(){
-            //terminalId + orderid + amount + okurl + failurl + islemtipi + taksit + storekey + provUser.getPasswordText()  
+            //terminalId + orderid + amount + okurl + failurl + islemtipi + taksit + storekey + provUser.getPasswordText()
             console.log("Hededededede");
-            var hash = sha1Hash("030691297" + 
+            var hash = sha1Hash("030691297" +
                             "0000000001405"+
                             "1250"+
                             "https://www.google.com"+
@@ -205,7 +195,7 @@ define([
                             "123qweASD").toUpperCase();
 
             console.log("Hash: ", hash);
-                            
+
             return hash;
 
         }

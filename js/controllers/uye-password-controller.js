@@ -27,9 +27,13 @@ define([
         };
 
         $scope.logout = function() {
-            Uye.deleteAuthorizationCookie();
-            $location.path('/');
-        }
+            Uye.logout().then(function successCallback(response) {
+              Uye.deleteAuthorizationCookie();
+              $location.path('/');
+            }, function errorCallback(response) {
+              console.log(response);
+            });
+        };
     }
 
     return module;

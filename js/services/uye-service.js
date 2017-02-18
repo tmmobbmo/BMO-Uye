@@ -13,6 +13,7 @@ define([
     function UyeService($http, $q, $cookies, $interpolate) {
         var service = {
             login,
+            logout,
             setAuthorizationCookie,
             getMemberInfo,
             getAuthorizationCookie,
@@ -32,9 +33,6 @@ define([
         };
 
         function login(username, password) {
-            //return $q(function (resolve, reject) {
-            //        resolve({"token": "test-token"});
-            //    });
             var data = {
                 "username": username,
                 "password": password
@@ -43,10 +41,12 @@ define([
         };
 
         function logout() {
-            return sendGetRequest('/auth/logout'); // TODO: bunun implemente edilmesi gerekli
+            console.log("logging out....");
+            return sendGetRequest('/auth/logout');
         }
 
         function sendGetRequest(url, data) {
+          console.log(url + " -> " + data);
             var req = {
                 method: 'GET',
                 url: rootUrl + url,
