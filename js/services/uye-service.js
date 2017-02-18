@@ -46,7 +46,7 @@ define([
         }
 
         function sendGetRequest(url, data) {
-          console.log(url + " -> " + data);
+            console.log(url + " -> " + data);
             var req = {
                 method: 'GET',
                 url: rootUrl + url,
@@ -73,9 +73,11 @@ define([
         };
 
         function sendGarantiPaymentRequest(paymentAmount) {
-            var url = $interpolate('/subscription/pay/{{paymentAmount}}')({paymentAmount: paymentAmount});
+            var url = $interpolate('/subscription/pay/{{paymentAmount}}')({
+                paymentAmount: paymentAmount
+            });
             console.log("Url: ", url);
-        	return sendPostRequest(url);
+            return sendPostRequest(url);
         }
 
         function setAuthorizationCookie(token) {
@@ -151,9 +153,9 @@ define([
         // change password
         function updatePassword(oldPassword, newPassword, newPasswordAgain) {
             var data = {
-                "eskiParola"        : oldPassword,
-                "yeniParola"        : newPassword,
-                "yeniParolaTekrar"  : newPasswordAgain
+                "eskiParola": oldPassword,
+                "yeniParola": newPassword,
+                "yeniParolaTekrar": newPasswordAgain
             };
             return sendPostRequest('/member/change/password', data);
         }

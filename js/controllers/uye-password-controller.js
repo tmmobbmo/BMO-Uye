@@ -28,10 +28,10 @@ define([
 
         $scope.logout = function() {
             Uye.logout().then(function successCallback(response) {
-              Uye.deleteAuthorizationCookie();
-              $location.path('/');
+                Uye.deleteAuthorizationCookie();
+                $location.path('/');
             }, function errorCallback(response) {
-              console.log(response);
+                console.log(response);
             });
         };
     }
