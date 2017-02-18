@@ -17,11 +17,11 @@
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12" >
                     <div class="card">
-                        <div class="card-content table-responsive" data-background-color="green">
+                        <div class="card-content table-responsive" data-background-color="white" style="color: black;">
                             <p>
-                                Odamızın hesap numaralarına <a href="#" style="font-weight: bold; text-decoration: underline;">buradan</a> ulaşabilirsiniz. Toplam borcunuz <span style="font-weight: bold; text-decoration: underline;">{{ debt }} TL</span>'dir.
+                                Odamızın hesap numaralarına <a href="http://www.bmo.org.tr/odemebilgileri/" target="_blank" style="font-weight: bold; color: black; text-decoration: underline;">buradan</a> ulaşabilirsiniz. Toplam borcunuz <span style="font-weight: bold; text-decoration: underline;">{{ debt }} TL</span>'dir.
                             </p>
                             <p>
                                 <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#noticeModal">
@@ -109,7 +109,7 @@
             <div ng-show="!isCreditCardScreen">
                 <div class="modal-body">
                     <form name="aidatCountForm">
-                        <label for="card-number">Ödenecek adet sayısı</label>
+                        <label for="card-number">Ödenecek aidat sayısı</label>
                         <select name="aidatCount" id="aidatCount" ng-model="data.model" ng-style="{'margin-left': '10px', 'width': '50px'}" ng-required="true">
                             <option ng-repeat="option in debtCountOptions" value="{{option}}">
                                 {{option}}
