@@ -20,7 +20,7 @@ define([
         $scope.debtCountOptions = [];
         $scope.isCreditCardScreen = false;
         Uye.getSubscriptionInfo().then(function successCallback(response) {
-            console.log("Aidat Response: ", response.data);
+            // console.log("Aidat Response: ", response.data);
             $scope.aidatInfo = response.data;
             let totalDebtCount = 0;
             angular.forEach($scope.aidatInfo, function(annualDebt, key) {
@@ -29,16 +29,16 @@ define([
             for (var i = 1; i <= totalDebtCount; i++) {
                 $scope.debtCountOptions.push(i);
             }
-            console.log("Options: ", $scope.debtCountOptions);
+            // console.log("Options: ", $scope.debtCountOptions);
         }, function errorCallback(response) {});
 
         Uye.getSubscriptionDebt().then(function successCallback(response) {
-            console.log("Debt Response: ", response.data);
+            // console.log("Debt Response: ", response.data);
             $scope.debt = response.data;
         }, function errorCallback(response) {});
 
         Uye.getSubscriptionReceiptList().then(function successCallback(response) {
-            console.log("Receipt Response: ", response.data);
+            // console.log("Receipt Response: ", response.data);
             $scope.receiptInfo = response.data;
         }, function errorCallback(response) {});
 
@@ -47,14 +47,14 @@ define([
                 Uye.deleteAuthorizationCookie();
                 $location.path('/');
             }, function errorCallback(response) {
-                console.log(response);
+                // console.log(response);
             });
         };
 
         $scope.setAidatCount = function(aidatCountForm) {
             var aidatCount = aidatCountForm.aidatCount.$modelValue;
             Uye.sendGarantiPaymentRequest(aidatCount).then(function successCallback(response) {
-                console.log("Response from initiate: ", response.data);
+                // console.log("Response from initiate: ", response.data);
                 $scope.txnAmount = response.data.amount;
                 $scope.customerIpAddress = response.data.customerIpAddress;
                 $scope.customerMailAdress = response.data.customerMailAddress;
@@ -76,7 +76,7 @@ define([
             var ccCvc = ccForm.ccCvc.$modelValue;
             var ccExpMonth = ccForm.ccExpMonth.$modelValue;
             var ccExpYear = ccForm.ccExpYear.$modelValue;
-            console.log("Values: ", ccNumber, ccCvc, ccExpMonth, ccExpYear);
+            // console.log("Values: ", ccNumber, ccCvc, ccExpMonth, ccExpYear);
 
         };
         ////////////////////////////////////
@@ -189,25 +189,6 @@ define([
                 s += v.toString(16);
             }
             return s;
-        }
-
-        function hashGenerate() {
-            //terminalId + orderid + amount + okurl + failurl + islemtipi + taksit + storekey + provUser.getPasswordText()
-            console.log("Hededededede");
-            var hash = sha1Hash("030691297" +
-                "0000000001405" +
-                "1250" +
-                "https://www.google.com" +
-                "https://www.twitter.com" +
-                "sales" +
-                "" +
-                "12345678" +
-                "123qweASD").toUpperCase();
-
-            console.log("Hash: ", hash);
-
-            return hash;
-
         }
         /////////////////////////////////////
     };

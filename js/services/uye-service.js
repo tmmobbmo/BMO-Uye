@@ -8,7 +8,7 @@ define([
         'ngCookies'
     ]).factory('Uye', UyeService);
 
-    var rootUrl = 'api';
+    var rootUrl = 'https://uye.bmo.org.tr/api';
 
     function UyeService($http, $q, $cookies, $interpolate) {
         var service = {
@@ -41,12 +41,12 @@ define([
         };
 
         function logout() {
-            console.log("logging out....");
+            // console.log("logging out....");
             return sendGetRequest('/auth/logout');
         }
 
         function sendGetRequest(url, data) {
-            console.log(url + " -> " + data);
+            // console.log(url + " -> " + data);
             var req = {
                 method: 'GET',
                 url: rootUrl + url,
@@ -55,7 +55,7 @@ define([
                 },
                 data: data
             };
-            console.log("Req - GET: ", req);
+            // console.log("Req - GET: ", req);
             return $http(req);
         };
 
@@ -68,7 +68,7 @@ define([
                 },
                 data: data
             };
-            console.log("Req - POST: ", req);
+            // console.log("Req - POST: ", req);
             return $http(req);
         };
 
@@ -76,7 +76,7 @@ define([
             var url = $interpolate('/subscription/pay/{{paymentAmount}}')({
                 paymentAmount: paymentAmount
             });
-            console.log("Url: ", url);
+            // console.log("Url: ", url);
             return sendPostRequest(url);
         }
 

@@ -18,17 +18,17 @@ define([
         $rootScope.isAidatActive = false;
         Uye.getMemberInfo().then(function successCallback(response) {
             $rootScope.user = response.data;
-            console.log("User: ", $scope.user);
+            // console.log("User: ", $scope.user);
         }, function errorCallback(response) {
             $scope.errorMessage = "Please try again later";
         });
 
         $scope.updateInfo = function() {
-            console.log("Successfull update: ", $scope.user);
+            // console.log("Successfull update: ", $scope.user);
         };
 
         $scope.updatePassword = function() {
-            console.log("Password update");
+            // console.log("Password update");
         };
 
         $scope.logout = function() {
@@ -36,7 +36,7 @@ define([
                 Uye.deleteAuthorizationCookie();
                 $location.path('/');
             }, function errorCallback(response) {
-                console.log(response);
+                // console.log(response);
             });
         };
     }

@@ -18,7 +18,7 @@ define([
         $rootScope.isAidatActive = false;
         Uye.getMemberInfo().then(function successCallback(response) {
             $rootScope.user = response.data;
-            console.log("User: ", $scope.user);
+            // console.log("User: ", $scope.user);
         }, function errorCallback(response) {
             $scope.errorMessage = "Please try again later";
         });
@@ -58,7 +58,7 @@ define([
                 Uye.deleteAuthorizationCookie();
                 $location.path('/');
             }, function errorCallback(response) {
-                console.log(response);
+                // console.log(response);
             });
         };
     }

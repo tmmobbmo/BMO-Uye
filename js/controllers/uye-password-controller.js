@@ -18,9 +18,9 @@ define([
         $rootScope.isAidatActive = false;
 
         $scope.updatePassword = function(oldPassword, newPassword, newPasswordAgain) {
-            console.log("Password update");
+            // console.log("Password update");
             Uye.updatePassword(oldPassword, newPassword, newPasswordAgain).then(function successCallback(response) {
-                console.log("succesfully updated!");
+                // console.log("succesfully updated!");
             }, function errorCallback(response) {
                 $scope.errorMessage = "An error occured!";
             });
@@ -31,7 +31,7 @@ define([
                 Uye.deleteAuthorizationCookie();
                 $location.path('/');
             }, function errorCallback(response) {
-                console.log(response);
+                // console.log(response);
             });
         };
     }

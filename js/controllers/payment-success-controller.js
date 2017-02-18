@@ -11,7 +11,7 @@ define([
     PaymentSuccessController.$inject = ['$rootScope', '$scope', '$location', 'Uye', '$cookies'];
 
     function PaymentSuccessController($rootScope, $scope, $location, Uye, $cookies) {
-        console.log("In success controller");
+        // console.log("In success controller");
     }
 
     return module;
