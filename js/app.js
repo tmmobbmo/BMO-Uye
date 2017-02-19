@@ -13,32 +13,27 @@ define([
     'services/uye-service'
 ], function(angular, ngRoute, ngCookies, angularCreditCards, uyeBilgiControllerModule, uyeAidatControllerModule, uyePasswordControllerModule, loginControllerModule, uyeOzetControllerModule, paymentSuccessControllerModule, paymentFailureControllerModule, uyeService) {
 
-    function testInterceptor() {
+    var testInterceptor = ['$cookies', '$window', '$q', '$injector', function($cookies, $window, $q, $injector) {
         return {
             request: function(config) {
-                console.log("AAAAAAAAAA");
-                console.log(config);
                 return config;
             },
             requestError: function(config) {
-                console.log("BBBBBBBBBBBBB");
-                console.log(config);
                 return config;
             },
             response: function(res) {
-                console.log("CCCCCCCCCCC");
-                console.log(res);
                 return res;
             },
             responseError: function(res) {
-                console.log("DDDDDDDDD");
-               
-                console.log(res);
-                $location.path("/");
-                return res;
+                if(res.status == 401){
+                    $cookies.remove("Authorization");
+                    $window.location = "/";
+                    return $q.reject(response);
+                } 	
+                return $q.reject(response);
             }
         }
-    }
+    }];
 
     var module = angular.module('bmoUye', [
             'ngRoute',
