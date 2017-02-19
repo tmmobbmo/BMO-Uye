@@ -12,24 +12,24 @@ define([
 
     function UyeService($http, $q, $cookies, $interpolate) {
         var service = {
-            login,
-            logout,
-            setAuthorizationCookie,
-            getMemberInfo,
-            getAuthorizationCookie,
-            deleteAuthorizationCookie,
-            getSubscriptionInfo,
-            getSubscriptionDebt,
-            getSubscriptionReceiptList,
-            getTrainingCount,
-            getSummaryDebt,
-            getUpcomingEventCount,
-            getActiveAnnouncementList,
-            getActiveAnnouncementCount,
-            getAnnouncementList,
-            createNewAnnouncement,
-            updatePassword,
-            sendGarantiPaymentRequest
+            login:login,
+            logout:logout,
+            setAuthorizationCookie:setAuthorizationCookie,
+            getMemberInfo:getMemberInfo,
+            getAuthorizationCookie:getAuthorizationCookie,
+            deleteAuthorizationCookie:deleteAuthorizationCookie,
+            getSubscriptionInfo:getSubscriptionInfo,
+            getSubscriptionDebt:getSubscriptionDebt,
+            getSubscriptionReceiptList:getSubscriptionReceiptList,
+            getTrainingCount:getTrainingCount,
+            getSummaryDebt:getSummaryDebt,
+            getUpcomingEventCount:getUpcomingEventCount,
+            getActiveAnnouncementList:getActiveAnnouncementList,
+            getActiveAnnouncementCount:getActiveAnnouncementCount,
+            getAnnouncementList:getAnnouncementList,
+            createNewAnnouncement:createNewAnnouncement,
+            updatePassword:updatePassword,
+            sendGarantiPaymentRequest:sendGarantiPaymentRequest
         };
 
         function login(username, password) {
