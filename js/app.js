@@ -25,9 +25,10 @@ define([
                 return res;
             },
             responseError: function(res) {
-                if(res.status == 401){
+                if(res.status == 401 && res.data.path != "/auth/login"){
                     $cookies.remove("Authorization");
                     $window.location = "/";
+                    console.log(res);
                     return $q.reject(response);
                 } 	
                 return $q.reject(response);
