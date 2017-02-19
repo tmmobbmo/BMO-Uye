@@ -10,32 +10,9 @@ define([
     'controllers/uye-ozet-controller',
     'controllers/payment-success-controller',
     'controllers/payment-failure-controller',
-    'services/uye-service'
-], function(angular, ngRoute, ngCookies, angularCreditCards, uyeBilgiControllerModule, uyeAidatControllerModule, uyePasswordControllerModule, loginControllerModule, uyeOzetControllerModule, paymentSuccessControllerModule, paymentFailureControllerModule, uyeService) {
-
-    var testInterceptor = ['$cookies', '$window', '$q', '$injector', function($cookies, $window, $q, $injector) {
-        return {
-            request: function(config) {
-                return config;
-            },
-            requestError: function(config) {
-                return config;
-            },
-            response: function(res) {
-                return res;
-            },
-            responseError: function(res) {
-                if(res.status == 401 && res.data.path != "/auth/login"){
-                    $cookies.remove("Authorization");
-                    $window.location = "/";
-                    console.log(res);
-                    return $q.reject(response);
-                } 	
-                return $q.reject(response);
-            }
-        }
-    }];
-
+    'services/uye-service',
+    'services/interceptor-service'
+], function(angular, ngRoute, ngCookies, angularCreditCards, uyeBilgiControllerModule, uyeAidatControllerModule, uyePasswordControllerModule, loginControllerModule, uyeOzetControllerModule, paymentSuccessControllerModule, paymentFailureControllerModule, uyeService, interceptorService) {
     var module = angular.module('bmoUye', [
             'ngRoute',
             'ngCookies',
@@ -46,12 +23,12 @@ define([
             uyeOzetControllerModule.name,
             uyePasswordControllerModule.name,
             paymentSuccessControllerModule.name,
-            paymentFailureControllerModule.name,
-            uyeService.name
+    paymentFailureControllerModule.name,
+    uyeService.name,
+    interceptorService.name
         ])
-        .factory('testInterceptor', testInterceptor)
         .config(['$httpProvider', '$routeProvider', '$locationProvider', function($httpProvider, $routeProvider, $locationProvider) {
-            $httpProvider.interceptors.push('testInterceptor');
+            $httpProvider.interceptors.push("interceptor");
             $locationProvider.html5Mode(true);
             $locationProvider.hashPrefix('!');
             $routeProvider
